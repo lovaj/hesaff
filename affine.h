@@ -11,7 +11,7 @@
 #define __AFFINE_H__
 
 #include <vector>
-#include <cv.h>
+#include <opencv2/opencv.hpp>
 #include "helpers.h"
 
 struct AffineShapeParams
@@ -55,6 +55,7 @@ struct AffineShapeCallback
       float a11, float a12, // affine shape matrix 
       float a21, float a22, 
       int type, float response, int iters) = 0;
+   virtual ~AffineShapeCallback(){}
 };
 
 struct AffineShape

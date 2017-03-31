@@ -1,0 +1,7 @@
+hesaff.o: hesaff.cpp pyramid.h helpers.h affine.h siftdesc.h
+affine.o: affine.cpp affine.h helpers.h
+siftdesc.o: siftdesc.cpp siftdesc.h helpers.h
+helpers.o: helpers.cpp \
+ /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h
+pyramid.o: pyramid.cpp pyramid.h helpers.h \
+ /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h

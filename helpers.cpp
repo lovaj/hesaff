@@ -9,7 +9,8 @@
 
 #include <cmath>
 #include <iostream>
-#include <cv.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/opencv.hpp>
 
 using namespace cv;
 using namespace std;
@@ -19,6 +20,10 @@ using namespace std;
 #include <sys/time.h>
 #include <unistd.h>
 #include <stdio.h>
+
+#include <omp.h>
+
+#include "advisor-annotate.h"
 
 double getTime()
 {     
@@ -206,7 +211,7 @@ bool interpolateCheckBorders(const Mat &im, float ofsx, float ofsy, float a11, f
    return false;
 }
 
-bool interpolate(const Mat &im, float ofsx, float ofsy, float a11, float a12, float a21, float a22, Mat &res)
+bool interpolateBool(const Mat &im, float ofsx, float ofsy, float a11, float a12, float a21, float a22, Mat &res)
 {         
    bool ret = false;
    // input size (-1 for the safe bilinear interpolation)
@@ -220,6 +225,7 @@ bool interpolate(const Mat &im, float ofsx, float ofsy, float a11, float a12, fl
    {
       const float rx = ofsx + j * a12;
       const float ry = ofsy + j * a22;
+	  #pragma omp simd
       for(int i=-halfWidth; i<=halfWidth; ++i)
       {
          float wx = rx + i * a11;
@@ -242,6 +248,62 @@ bool interpolate(const Mat &im, float ofsx, float ofsy, float a11, float a12, fl
    }
    return ret;
 }
+
+void interpolate(const Mat &im, float ofsx, float ofsy, float a11, float a12, float a21, float a22, Mat &res)
+{
+   bool ret = false;
+   // input size (-1 for the safe bilinear interpolation)
+   const int width = im.cols-1;
+   const int height = im.rows-1;
+   // output size
+   const int halfWidth  = res.cols >> 1;
+   const int halfHeight = res.rows >> 1;
+   int dim = res.rows * res.cols;
+   float *out = res.ptr<float>(0);
+
+ /*  const int shhval = halfHeight*2+1;
+   const int shwval = halfWidth*2+1;
+   float *hhval = (float*) malloc (shhval * sizeof(float));
+   float *hwval = (float*) malloc (shwval * sizeof(float));
+
+   #pragma omp simd
+   for(int i=0; i<=halfHeight; i++){
+ 	   hhval[i+halfHeight] = i;
+ 	   hhval[i] = -halfHeight+i;
+   }
+   #pragma omp simd
+   for(int i=0; i<=halfWidth; i++){
+ 	  hwval[i+halfWidth] = i;
+ 	  hwval[i] = -halfWidth+i;
+   }
+   */
+
+   for (int j=-halfHeight; j<=halfHeight; ++j)
+   {
+      for(int i=-halfWidth; i<=halfWidth; ++i)
+      {
+	     const float rx = ofsx + j * a12;
+	     const float ry = ofsy + j * a22;
+         float wx = rx + i * a11;
+         float wy = ry + i * a21;
+         const int x = (int) floor(wx);
+         const int y = (int) floor(wy);
+         if (x >= 0 && y >= 0 && x < width && y < height)
+         {
+            // compute weights
+            wx -= x; wy -= y;
+            // bilinear interpolation
+            *out++ =
+               (1.0f - wy) * ((1.0f - wx) * im.at<float>(y,x)   + wx * im.at<float>(y,x+1)) +
+               (       wy) * ((1.0f - wx) * im.at<float>(y+1,x) + wx * im.at<float>(y+1,x+1));
+         } else {
+            *out++ = 0;
+         }
+      }
+   }
+
+}
+
 
 void photometricallyNormalize(Mat &image, const Mat &binaryMask, float &sum, float &var)
 {   

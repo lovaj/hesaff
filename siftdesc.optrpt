@@ -1,0 +1,1951 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 17.0.1.132 Build 20161005
+
+Compiler options: -I /opt/intel/advisor_2017.1.1.486553/include/ -I/home/luca/ParallelOpenCV/include -O3 -g -qopt-report=5 -simd -Bdynamic -parallel -qopenmp -parallel-source-info=2 -ldl -qopenmp-link dynamic -debug inline-debug-info -shared-intel -xCORE-AVX2 -Wall -std=c++11 -c -o siftdesc.o
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: SIFTDescriptor::samplePatch(SIFTDescriptor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SIFTDescriptor::samplePatch(SIFTDescriptor *)) [1/98=1.0%] siftdesc.cpp(52,1)
+  -> INLINE (MANUAL): (60,27) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (60,49) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (66,58) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (76,41) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (76,72) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (77,41) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (77,72) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (78,41) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (78,72) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (79,41) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (79,72) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at siftdesc.cpp(53,4)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at siftdesc.cpp(58,7)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=7
+   LOOP END
+
+   LOOP BEGIN at siftdesc.cpp(58,7)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #17106: parallel dependence: assumed ANTI dependence between this->w0[c] (62:59) and *(this+(br1+bc1+bo1)*4) (79:72)
+      remark #17106: parallel dependence: assumed FLOW dependence between *(this+(br1+bc1+bo1)*4) (79:72) and this->w0[c] (62:59)
+      remark #15389: vectorization support: reference (this+*this*r)[c] has unaligned access   [ siftdesc.cpp(60,27) ]
+      remark #15389: vectorization support: reference (this+*this*r)[c] has unaligned access   [ siftdesc.cpp(60,49) ]
+      remark #15389: vectorization support: reference this->bin0[c] has unaligned access   [ siftdesc.cpp(62,26) ]
+      remark #15389: vectorization support: reference this->w0[c] has unaligned access   [ siftdesc.cpp(62,53) ]
+      remark #15389: vectorization support: reference this->bin1[c] has unaligned access   [ siftdesc.cpp(63,26) ]
+      remark #15389: vectorization support: reference this->w1[c] has unaligned access   [ siftdesc.cpp(63,53) ]
+      remark #15389: vectorization support: reference (this+*this*r)[c] has unaligned access   [ siftdesc.cpp(66,58) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br0+bc0+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(76,41) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br0+bc0+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(76,41) ]
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br0+bc0+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(76,72) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br0+bc0+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(76,72) ]
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br0+bc1+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(77,41) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br0+bc1+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(77,41) ]
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br0+bc1+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(77,72) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br0+bc1+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(77,72) ]
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br1+bc0+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(78,41) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br1+bc0+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(78,41) ]
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br1+bc0+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(78,72) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br1+bc0+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(78,72) ]
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br1+bc1+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(79,41) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br1+bc1+bo0)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(79,41) ]
+      remark #15329: vectorization support: irregularly indexed store was emulated for the variable <*(this+(br1+bc1+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(79,72) ]
+      remark #15415: vectorization support: irregularly indexed load was generated for the variable <*(this+(br1+bc1+bo1)*4)>, masked, part of index is read from memory   [ siftdesc.cpp(79,72) ]
+      remark #15305: vectorization support: vector length 8
+      remark #15309: vectorization support: normalized vectorization overhead 0.021
+      remark #15417: vectorization support: number of FP up converts: single precision to double precision 2   [ siftdesc.cpp(80,7) ]
+      remark #15418: vectorization support: number of FP down converts: double precision to single precision 1   [ siftdesc.cpp(80,7) ]
+      remark #15301: OpenMP SIMD LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15450: unmasked unaligned unit stride loads: 7 
+      remark #15458: masked indexed (or gather) loads: 8 
+      remark #15459: masked indexed (or scatter) stores: 8 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 195 
+      remark #15477: vector cost: 497.250 
+      remark #15478: estimated potential speedup: 0.400 
+      remark #15482: vectorized math library calls: 2 
+      remark #15486: divides: 1 
+      remark #15487: type converts: 4 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at siftdesc.cpp(58,7)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+siftdesc.cpp(52,1):remark #34051: REGISTER ALLOCATION : [_ZN14SIFTDescriptor11samplePatchEv] siftdesc.cpp:52
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   30[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :     688
+            Global    :     268
+            Local     :     420
+        Regenerable   :       9
+        Spilled       :      37
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :     488 bytes*
+            Reads     :      86 [3.58e+02 ~ 3.7%]
+            Writes    :      58 [1.26e+02 ~ 1.3%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: SIFTDescriptor::sample(SIFTDescriptor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SIFTDescriptor::sample(SIFTDescriptor *)) [2/98=2.0%] siftdesc.cpp(100,1)
+  -> INLINE (MANUAL): (101,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (101,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (101,47) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> (103,4) SIFTDescriptor::samplePatch(SIFTDescriptor *) (isz = 265) (sz = 270)
+     [[ Inlining would exceed -inline-max-size value (270>253) <1>]]
+  -> INLINE: (103,19) SIFTDescriptor::normalize(SIFTDescriptor *) (isz = 94) (sz = 101)
+    -> INLINE (MANUAL): (87,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (87,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (89,28) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+    -> INLINE (MANUAL): (92,14) std::sqrt(float) (isz = 0) (sz = 7)
+    -> INLINE (MANUAL): (95,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (95,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (95,47) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (106,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (106,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (106,51) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (106,79) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE: (107,17) SIFTDescriptor::normalize(SIFTDescriptor *) (isz = 94) (sz = 101)
+    -> INLINE (MANUAL): (87,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (87,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (89,28) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+    -> INLINE (MANUAL): (92,14) std::sqrt(float) (isz = 0) (sz = 7)
+    -> INLINE (MANUAL): (95,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (95,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): (95,47) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (109,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (109,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (111,16) std::min<int>(const int &, const int &) (isz = 2) (sz = 12)
+  -> INLINE (MANUAL): (111,38) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (112,10) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at siftdesc.cpp(101,31)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(103,19)
+<Peeled loop for vectorization>
+   remark #25015: Estimate of max trip count of loop=7
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(103,19)
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15399: vectorization support: unroll factor set to 2
+   remark #15309: vectorization support: normalized vectorization overhead 2.500
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15450: unmasked unaligned unit stride loads: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 8 
+   remark #15477: vector cost: 0.870 
+   remark #15478: estimated potential speedup: 6.260 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(103,19)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15309: vectorization support: normalized vectorization overhead 4.750
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(103,19)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(95,31) inlined into siftdesc.cpp(103,19)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(106,31)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(107,17)
+<Peeled loop for vectorization>
+   remark #25015: Estimate of max trip count of loop=7
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(107,17)
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15399: vectorization support: unroll factor set to 2
+   remark #15309: vectorization support: normalized vectorization overhead 2.500
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15450: unmasked unaligned unit stride loads: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 8 
+   remark #15477: vector cost: 0.870 
+   remark #15478: estimated potential speedup: 6.260 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(107,17)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15309: vectorization support: normalized vectorization overhead 4.750
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31) inlined into siftdesc.cpp(107,17)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(95,31) inlined into siftdesc.cpp(107,17)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(109,31)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+siftdesc.cpp(100,1):remark #34051: REGISTER ALLOCATION : [_ZN14SIFTDescriptor6sampleEv] siftdesc.cpp:100
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   17[ rax rdx rcx rsi rdi r8-r11 r14 zmm0-zmm6]
+        
+    Routine temporaries
+        Total         :     192
+            Global    :      61
+            Local     :     131
+        Regenerable   :       8
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       8 bytes*
+            Reads     :       1 [1.00e+00 ~ 0.2%]
+            Writes    :       1 [1.00e+00 ~ 0.2%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: SIFTDescriptor::computeSiftDescriptor(SIFTDescriptor *, cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SIFTDescriptor::computeSiftDescriptor(SIFTDescriptor *, cv::Mat &)) [3/98=3.1%] siftdesc.cpp(117,1)
+  -> EXTERN: (122,4) photometricallyNormalize(cv::Mat &, const cv::Mat &, float &, float &)
+  -> INLINE (MANUAL): (128,36) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (128,61) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (129,45) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (129,68) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (130,30) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (130,55) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (132,36) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (132,61) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (133,46) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (133,69) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (134,30) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (134,55) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (136,15) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (137,14) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (137,31) std::atan2(float, float) (isz = 1) (sz = 10)
+    -> EXTERN: /usr/include/c++/5/cmath:(164,12) __builtin_atan2f(float, float)
+  -> (140,4) SIFTDescriptor::sample(SIFTDescriptor *) (isz = 364) (sz = 369)
+     [[ Inlining would exceed -inline-max-size value (369>253) <1>]]
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at siftdesc.cpp(125,7)
+   remark #25261: Invariant Condition eliminated(Proven True) at line 132
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed ANTI dependence between (xgrad+xgrad*r)[c-1] (129:31) and (this+*this*r)[c] (137:14)
+   remark #15346: vector dependence: assumed FLOW dependence between (this+*this*r)[c] (137:14) and (xgrad+xgrad*r)[c-1] (129:31)
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(124,4)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed ANTI dependence between (xgrad+xgrad*r)[c+1] (128:22) and (this+*this*r)[c] (137:14)
+   remark #17106: parallel dependence: assumed FLOW dependence between (this+*this*r)[c] (137:14) and (xgrad+xgrad*r)[c+1] (128:22)
+   remark #25261: Invariant Condition eliminated(Proven True) at line 128
+   remark #25260: Invariant Condition eliminated(Proven False) at line 132
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed ANTI dependence between (xgrad+xgrad*r)[c] (128:22) and (this+*this*r)[c] (137:14)
+   remark #15346: vector dependence: assumed FLOW dependence between (this+*this*r)[c] (137:14) and (xgrad+xgrad*r)[c] (128:22)
+
+   LOOP BEGIN at siftdesc.cpp(125,7)
+   <Predicate Optimized v1>
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #17106: parallel dependence: assumed ANTI dependence between (xgrad+xgrad*r)[c+1] (128:22) and (this+*this*r)[c] (137:14)
+      remark #17106: parallel dependence: assumed FLOW dependence between (this+*this*r)[c] (137:14) and (xgrad+xgrad*r)[c+1] (128:22)
+      remark #25422: Invariant Condition at line 133 hoisted out of this loop
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed ANTI dependence between (xgrad+xgrad*r)[c-1] (129:31) and (this+*this*r)[c] (137:14)
+      remark #15346: vector dependence: assumed FLOW dependence between (this+*this*r)[c] (137:14) and (xgrad+xgrad*r)[c-1] (129:31)
+   LOOP END
+
+   LOOP BEGIN at siftdesc.cpp(125,7)
+   <Predicate Optimized v2>
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed ANTI dependence between (xgrad+xgrad*r)[c-1] (129:31) and (this+*this*r)[c] (137:14)
+      remark #15346: vector dependence: assumed FLOW dependence between (this+*this*r)[c] (137:14) and (xgrad+xgrad*r)[c-1] (129:31)
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+siftdesc.cpp(117,1):remark #34051: REGISTER ALLOCATION : [_ZN14SIFTDescriptor21computeSiftDescriptorERN2cv3MatE] siftdesc.cpp:117
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   16[ rax rdx rcx rbx rbp rsi rdi r12-r15 zmm0-zmm4]
+        
+    Routine temporaries
+        Total         :     128
+            Global    :      58
+            Local     :      70
+        Regenerable   :       5
+        Spilled       :      20
+        
+    Routine stack
+        Variables     :       8 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :     112 bytes*
+            Reads     :      30 [1.81e+02 ~ 9.7%]
+            Writes    :      25 [6.32e+01 ~ 3.4%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: SIFTDescriptor::normalize(SIFTDescriptor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SIFTDescriptor::normalize(SIFTDescriptor *)) [4/98=4.1%] siftdesc.cpp(85,1)
+  -> INLINE (MANUAL): (87,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (87,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (89,28) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> INLINE (MANUAL): (92,14) std::sqrt(float) (isz = 0) (sz = 7)
+  -> INLINE (MANUAL): (95,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (95,31) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+  -> INLINE (MANUAL): (95,47) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at siftdesc.cpp(87,31)
+<Peeled loop for vectorization>
+   remark #25015: Estimate of max trip count of loop=7
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31)
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15399: vectorization support: unroll factor set to 2
+   remark #15309: vectorization support: normalized vectorization overhead 2.500
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15450: unmasked unaligned unit stride loads: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 8 
+   remark #15477: vector cost: 0.870 
+   remark #15478: estimated potential speedup: 6.260 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15389: vectorization support: reference this[i] has unaligned access   [ siftdesc.cpp(89,28) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 8
+   remark #15309: vectorization support: normalized vectorization overhead 4.750
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(87,31)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(95,31)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+siftdesc.cpp(85,1):remark #34051: REGISTER ALLOCATION : [_ZN14SIFTDescriptor9normalizeEv] siftdesc.cpp:85
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   14[ rax rdx rcx rsi rdi r8-r10 zmm0-zmm5]
+        
+    Routine temporaries
+        Total         :      76
+            Global    :      27
+            Local     :      49
+        Regenerable   :       4
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Destroy<std::_Vector_base<float, std::allocator<float>>::pointer, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::allocator<float> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Destroy<std::_Vector_base<float, std::allocator<float>>::pointer, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::allocator<float> &)) /usr/include/c++/5/bits/stl_construct.h(150,5)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<float>::max_size(const __gnu_cxx::new_allocator<float> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<float>::max_size(const __gnu_cxx::new_allocator<float> *) const) /usr/include/c++/5/ext/new_allocator.h(114,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Destroy<std::_Vector_base<int, std::allocator<int>>::pointer, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::allocator<int> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Destroy<std::_Vector_base<int, std::allocator<int>>::pointer, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::allocator<int> &)) /usr/include/c++/5/bits/stl_construct.h(150,5)
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<int, std::allocator<int>>::_M_deallocate(std::_Vector_base<int, std::allocator<int>> *, std::_Vector_base<int, std::allocator<int>>::pointer, std::size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::_Vector_base<int, std::allocator<int>>::_M_deallocate(std::_Vector_base<int, std::allocator<int>> *, std::_Vector_base<int, std::allocator<int>>::pointer, std::size_t)) [8/98=8.2%] /usr/include/c++/5/bits/stl_vector.h(175,7)
+  -> INLINE (MANUAL): (178,4) std::allocator_traits<std::allocator<int>>::deallocate(std::allocator_traits<std::allocator<int>>::allocator_type &, std::allocator_traits<std::allocator<int>>::pointer, std::allocator_traits<std::allocator<int>>::size_type) (isz = 0) (sz = 9)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(517,13) __gnu_cxx::new_allocator<int>::deallocate(__gnu_cxx::new_allocator<int> *, __gnu_cxx::new_allocator<int>::pointer, __gnu_cxx::new_allocator<int>::size_type) (isz = 0) (sz = 7)
+      -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(110,9) operator delete(void *)
+
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/stl_vector.h(175,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim] /usr/include/c++/5/bits/stl_vector.h:175
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      11
+            Global    :       7
+            Local     :       4
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<float, std::allocator<float>>::_M_deallocate(std::_Vector_base<float, std::allocator<float>> *, std::_Vector_base<float, std::allocator<float>>::pointer, std::size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::_Vector_base<float, std::allocator<float>>::_M_deallocate(std::_Vector_base<float, std::allocator<float>> *, std::_Vector_base<float, std::allocator<float>>::pointer, std::size_t)) [9/98=9.2%] /usr/include/c++/5/bits/stl_vector.h(175,7)
+  -> INLINE (MANUAL): (178,4) std::allocator_traits<std::allocator<float>>::deallocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::pointer, std::allocator_traits<std::allocator<float>>::size_type) (isz = 0) (sz = 9)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(517,13) __gnu_cxx::new_allocator<float>::deallocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::pointer, __gnu_cxx::new_allocator<float>::size_type) (isz = 0) (sz = 7)
+      -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(110,9) operator delete(void *)
+
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/stl_vector.h(175,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseIfSaIfEE13_M_deallocateEPfm] /usr/include/c++/5/bits/stl_vector.h:175
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      11
+            Global    :       7
+            Local     :       4
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *)) [10/98=10.2%] /usr/include/c++/5/bits/stl_vector.h(114,7)
+
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/stl_vector.h(114,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseIiSaIiEE19_M_get_Tp_allocatorEv] /usr/include/c++/5/bits/stl_vector.h:114
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ rax rdi]
+        
+    Routine temporaries
+        Total         :       9
+            Global    :       0
+            Local     :       9
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *)) [11/98=11.2%] /usr/include/c++/5/bits/stl_vector.h(114,7)
+
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/stl_vector.h(114,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseIfSaIfEE19_M_get_Tp_allocatorEv] /usr/include/c++/5/bits/stl_vector.h:114
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ rax rdi]
+        
+    Routine temporaries
+        Total         :       9
+            Global    :       0
+            Local     :       9
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<int>::max_size(const __gnu_cxx::new_allocator<int> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<int>::max_size(const __gnu_cxx::new_allocator<int> *) const) /usr/include/c++/5/ext/new_allocator.h(114,7)
+
+===========================================================================
+
+Begin optimization report for: SIFTDescriptor::precomputeBinsAndWeights(SIFTDescriptor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SIFTDescriptor::precomputeBinsAndWeights(SIFTDescriptor *)) [13/98=13.3%] siftdesc.cpp(19,1)
+  -> INLINE (MANUAL): (24,17) std::vector<int, std::allocator<int>>::resize(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type) (isz = 393) (sz = 400)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(675,19) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(676,4) std::vector<int, std::allocator<int>>::_M_default_append(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type) (isz = 344) (sz = 351)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(549,3) std::__uninitialized_default_n_a<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::allocator<int> &) (isz = 26) (sz = 37)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(637,14) std::__uninitialized_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type) (isz = 26) (sz = 35)
+          -> INLINE (MANUAL): (573,14) std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type) (isz = 24) (sz = 33)
+            -> INLINE (MANUAL): (540,11) std::fill_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &) (isz = 20) (sz = 31)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,18) std::__fill_n_a<std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &) (isz = 15) (sz = 26)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,34) std::__niter_base<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 1) (sz = 8)
+                -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::_S_base(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 0) (sz = 5)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(550,13) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *) (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(555,3) std::vector<int, std::allocator<int>>::_M_check_len(const std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type, const char *) const (isz = 100) (sz = 111)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1424,6) std::vector<int, std::allocator<int>>::max_size(const std::vector<int, std::allocator<int>> *) const (isz = 12) (sz = 19)
+          -> INLINE (MANUAL): (660,16) std::allocator_traits<std::allocator<int>>::max_size(const std::allocator_traits<std::allocator<int>>::allocator_type &) (isz = 4) (sz = 11)
+            -> DELETED: /usr/include/c++/5/bits/alloc_traits.h:(551,20) __gnu_cxx::new_allocator<int>::max_size(const __gnu_cxx::new_allocator<int> *) const (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): (660,40) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(const std::_Vector_base<int, std::allocator<int>> *) const (isz = 1) (sz = 8)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1424,19) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+        -> EXTERN: /usr/include/c++/5/bits/stl_vector.h:(1425,4) std::__throw_length_error(const char *)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1427,26) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1427,35) std::max<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type>(const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &, const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &) (isz = 2) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1427,44) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1428,18) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1428,36) std::vector<int, std::allocator<int>>::max_size(const std::vector<int, std::allocator<int>> *) const (isz = 12) (sz = 19)
+          -> INLINE (MANUAL): (660,16) std::allocator_traits<std::allocator<int>>::max_size(const std::allocator_traits<std::allocator<int>>::allocator_type &) (isz = 4) (sz = 11)
+            -> DELETED: /usr/include/c++/5/bits/alloc_traits.h:(551,20) __gnu_cxx::new_allocator<int>::max_size(const __gnu_cxx::new_allocator<int> *) const (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): (660,40) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(const std::_Vector_base<int, std::allocator<int>> *) const (isz = 1) (sz = 8)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1428,50) std::vector<int, std::allocator<int>>::max_size(const std::vector<int, std::allocator<int>> *) const (isz = 12) (sz = 19)
+          -> INLINE (MANUAL): (660,16) std::allocator_traits<std::allocator<int>>::max_size(const std::allocator_traits<std::allocator<int>>::allocator_type &) (isz = 4) (sz = 11)
+            -> DELETED: /usr/include/c++/5/bits/alloc_traits.h:(551,20) __gnu_cxx::new_allocator<int>::max_size(const __gnu_cxx::new_allocator<int> *) const (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): (660,40) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(const std::_Vector_base<int, std::allocator<int>> *) const (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(556,43) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(557,34) std::_Vector_base<int, std::allocator<int>>::_M_allocate(std::_Vector_base<int, std::allocator<int>> *, std::size_t) (isz = 16) (sz = 25)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(170,20) std::allocator_traits<std::allocator<int>>::allocate(std::allocator_traits<std::allocator<int>>::allocator_type &, std::allocator_traits<std::allocator<int>>::size_type) (isz = 9) (sz = 18)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(491,20) __gnu_cxx::new_allocator<int>::allocate(__gnu_cxx::new_allocator<int> *, __gnu_cxx::new_allocator<int>::size_type, const void *) (isz = 7) (sz = 18)
+            -> DELETED: /usr/include/c++/5/ext/new_allocator.h:(101,18) __gnu_cxx::new_allocator<int>::max_size(const __gnu_cxx::new_allocator<int> *) const (isz = 0) (sz = 5)
+            -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(102,4) std::__throw_bad_alloc()
+            -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(104,27) operator new(std::size_t)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(562,9) std::__uninitialized_move_if_noexcept_a<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::_Tp_alloc_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::_Tp_alloc_type &) (isz = 54) (sz = 67)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(302,14) std::__uninitialized_copy_a<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer, int>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer, std::allocator<int> &) (isz = 43) (sz = 56)
+          -> INLINE (MANUAL): (281,14) std::uninitialized_copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer) (isz = 43) (sz = 54)
+            -> INLINE (MANUAL): (123,14) std::__uninitialized_copy<true>::__uninit_copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer) (isz = 41) (sz = 52)
+              -> INLINE (MANUAL): (93,18) std::copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer) (isz = 40) (sz = 51)
+                -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(470,15) std::__copy_move_a2<true, std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::vector<int, std::allocator<int>>::pointer>(std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::vector<int, std::allocator<int>>::pointer) (isz = 27) (sz = 38)
+                  -> INLINE (MANUAL): (438,18) std::__copy_move_a<true, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type>(std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type) (isz = 14) (sz = 25)
+                    -> INLINE (MANUAL): (401,14) std::__copy_move<true, true, std::iterator_traits<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::pointer>::iterator_category>::__copy_m<int>(const int *, const int *, int *) (isz = 12) (sz = 23)
+                      -> EXTERN: (384,6) __builtin_memmove(void *, const void *, unsigned long)
+                  -> INLINE (MANUAL): (438,46) std::__niter_base<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 1) (sz = 8)
+                    -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::_S_base(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 0) (sz = 5)
+                  -> INLINE (MANUAL): (439,11) std::__niter_base<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 1) (sz = 8)
+                    -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::_S_base(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 0) (sz = 5)
+                  -> INLINE (MANUAL): (440,11) std::__niter_base<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 1) (sz = 8)
+                    -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::_S_base(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 0) (sz = 5)
+                -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(471,9) std::__miter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>) (isz = 3) (sz = 10)
+                  -> INLINE (MANUAL): (294,14) std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>) (isz = 2) (sz = 9)
+                    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator_base_types.h:(224,21) std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::base(const std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *) const (isz = 0) (sz = 6)
+                -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(471,37) std::__miter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>) (isz = 3) (sz = 10)
+                  -> INLINE (MANUAL): (294,14) std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>) (isz = 2) (sz = 9)
+                    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator_base_types.h:(224,21) std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::base(const std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *) const (isz = 0) (sz = 6)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(303,3) std::__make_move_if_noexcept_iterator<std::_Vector_base<int, std::allocator<int>>::pointer, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 2) (sz = 9)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator.h:(1167,26) std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::iterator_type) (isz = 0) (sz = 6)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(304,3) std::__make_move_if_noexcept_iterator<std::_Vector_base<int, std::allocator<int>>::pointer, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 2) (sz = 9)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator.h:(1167,26) std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::iterator_type) (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(564,21) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *) (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(566,7) std::__uninitialized_default_n_a<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::allocator<int> &) (isz = 26) (sz = 37)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(637,14) std::__uninitialized_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type) (isz = 26) (sz = 35)
+          -> INLINE (MANUAL): (573,14) std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type) (isz = 24) (sz = 33)
+            -> INLINE (MANUAL): (540,11) std::fill_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &) (isz = 20) (sz = 31)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,18) std::__fill_n_a<std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &) (isz = 15) (sz = 26)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,34) std::__niter_base<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 1) (sz = 8)
+                -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::_S_base(std::_Vector_base<int, std::allocator<int>>::pointer) (isz = 0) (sz = 5)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(567,12) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *) (isz = 1) (sz = 8)
+      -> EXTERN: /usr/include/c++/5/bits/vector.tcc:(569,8) __cxa_begin_catch
+      -> EXTERN: /usr/include/c++/5/bits/vector.tcc:(570,3) __cxa_end_catch
+      -> DELETED: /usr/include/c++/5/bits/vector.tcc:(571,5) std::_Destroy<std::_Vector_base<int, std::allocator<int>>::pointer, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::allocator<int> &) (isz = 0) (sz = 8)
+      -> /usr/include/c++/5/bits/vector.tcc:(572,5) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *) (isz = 1) (sz = 8)
+         [[ Callee not marked with inlining pragma  <2>]]
+      -> /usr/include/c++/5/bits/vector.tcc:(573,5) std::_Vector_base<int, std::allocator<int>>::_M_deallocate(std::_Vector_base<int, std::allocator<int>> *, std::_Vector_base<int, std::allocator<int>>::pointer, std::size_t) (isz = 4) (sz = 13)
+         [[ Callee not marked with inlining pragma  <2>]]
+      -> EXTERN: /usr/include/c++/5/bits/vector.tcc:(574,5) __cxa_rethrow
+      -> DELETED: /usr/include/c++/5/bits/vector.tcc:(576,8) std::_Destroy<std::_Vector_base<int, std::allocator<int>>::pointer, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::allocator<int> &) (isz = 0) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(577,8) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *) (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(578,8) std::_Vector_base<int, std::allocator<int>>::_M_deallocate(std::_Vector_base<int, std::allocator<int>> *, std::_Vector_base<int, std::allocator<int>>::pointer, std::size_t) (isz = 4) (sz = 13)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(178,4) std::allocator_traits<std::allocator<int>>::deallocate(std::allocator_traits<std::allocator<int>>::allocator_type &, std::allocator_traits<std::allocator<int>>::pointer, std::allocator_traits<std::allocator<int>>::size_type) (isz = 0) (sz = 9)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(517,13) __gnu_cxx::new_allocator<int>::deallocate(__gnu_cxx::new_allocator<int> *, __gnu_cxx::new_allocator<int>::pointer, __gnu_cxx::new_allocator<int>::size_type) (isz = 0) (sz = 7)
+            -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(110,9) operator delete(void *)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(676,35) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(677,24) std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(678,4) std::vector<int, std::allocator<int>>::_M_erase_at_end(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::pointer) (isz = 13) (sz = 20)
+      -> EXTERN: (1437,7) __cxa_call_unexpected
+      -> DELETED: (1438,2) std::_Destroy<std::_Vector_base<int, std::allocator<int>>::pointer, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::allocator<int> &) (isz = 0) (sz = 8)
+      -> INLINE (MANUAL): (1438,48) std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(std::_Vector_base<int, std::allocator<int>> *) (isz = 1) (sz = 8)
+  -> INLINE (MANUAL): (25,20) std::vector<float, std::allocator<float>>::resize(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 393) (sz = 400)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(675,19) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(676,4) std::vector<float, std::allocator<float>>::_M_default_append(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 344) (sz = 351)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(549,3) std::__uninitialized_default_n_a<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::allocator<float> &) (isz = 26) (sz = 37)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(637,14) std::__uninitialized_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type) (isz = 26) (sz = 35)
+          -> INLINE (MANUAL): (573,14) std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type) (isz = 24) (sz = 33)
+            -> INLINE (MANUAL): (540,11) std::fill_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &) (isz = 20) (sz = 31)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,18) std::__fill_n_a<std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &) (isz = 15) (sz = 26)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,34) std::__niter_base<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 1) (sz = 8)
+                -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::_S_base(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 0) (sz = 5)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(550,13) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *) (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(555,3) std::vector<float, std::allocator<float>>::_M_check_len(const std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type, const char *) const (isz = 100) (sz = 111)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1424,6) std::vector<float, std::allocator<float>>::max_size(const std::vector<float, std::allocator<float>> *) const (isz = 12) (sz = 19)
+          -> INLINE (MANUAL): (660,16) std::allocator_traits<std::allocator<float>>::max_size(const std::allocator_traits<std::allocator<float>>::allocator_type &) (isz = 4) (sz = 11)
+            -> DELETED: /usr/include/c++/5/bits/alloc_traits.h:(551,20) __gnu_cxx::new_allocator<float>::max_size(const __gnu_cxx::new_allocator<float> *) const (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): (660,40) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(const std::_Vector_base<float, std::allocator<float>> *) const (isz = 1) (sz = 8)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1424,19) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+        -> EXTERN: /usr/include/c++/5/bits/stl_vector.h:(1425,4) std::__throw_length_error(const char *)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1427,26) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1427,35) std::max<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type>(const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &, const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &) (isz = 2) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1427,44) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1428,18) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1428,36) std::vector<float, std::allocator<float>>::max_size(const std::vector<float, std::allocator<float>> *) const (isz = 12) (sz = 19)
+          -> INLINE (MANUAL): (660,16) std::allocator_traits<std::allocator<float>>::max_size(const std::allocator_traits<std::allocator<float>>::allocator_type &) (isz = 4) (sz = 11)
+            -> DELETED: /usr/include/c++/5/bits/alloc_traits.h:(551,20) __gnu_cxx::new_allocator<float>::max_size(const __gnu_cxx::new_allocator<float> *) const (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): (660,40) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(const std::_Vector_base<float, std::allocator<float>> *) const (isz = 1) (sz = 8)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(1428,50) std::vector<float, std::allocator<float>>::max_size(const std::vector<float, std::allocator<float>> *) const (isz = 12) (sz = 19)
+          -> INLINE (MANUAL): (660,16) std::allocator_traits<std::allocator<float>>::max_size(const std::allocator_traits<std::allocator<float>>::allocator_type &) (isz = 4) (sz = 11)
+            -> DELETED: /usr/include/c++/5/bits/alloc_traits.h:(551,20) __gnu_cxx::new_allocator<float>::max_size(const __gnu_cxx::new_allocator<float> *) const (isz = 0) (sz = 5)
+          -> INLINE (MANUAL): (660,40) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(const std::_Vector_base<float, std::allocator<float>> *) const (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(556,43) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(557,34) std::_Vector_base<float, std::allocator<float>>::_M_allocate(std::_Vector_base<float, std::allocator<float>> *, std::size_t) (isz = 16) (sz = 25)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(170,20) std::allocator_traits<std::allocator<float>>::allocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::size_type) (isz = 9) (sz = 18)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(491,20) __gnu_cxx::new_allocator<float>::allocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::size_type, const void *) (isz = 7) (sz = 18)
+            -> DELETED: /usr/include/c++/5/ext/new_allocator.h:(101,18) __gnu_cxx::new_allocator<float>::max_size(const __gnu_cxx::new_allocator<float> *) const (isz = 0) (sz = 5)
+            -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(102,4) std::__throw_bad_alloc()
+            -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(104,27) operator new(std::size_t)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(562,9) std::__uninitialized_move_if_noexcept_a<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::_Tp_alloc_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::_Tp_alloc_type &) (isz = 54) (sz = 67)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(302,14) std::__uninitialized_copy_a<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer, float>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer, std::allocator<float> &) (isz = 43) (sz = 56)
+          -> INLINE (MANUAL): (281,14) std::uninitialized_copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer) (isz = 43) (sz = 54)
+            -> INLINE (MANUAL): (123,14) std::__uninitialized_copy<true>::__uninit_copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer) (isz = 41) (sz = 52)
+              -> INLINE (MANUAL): (93,18) std::copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer) (isz = 40) (sz = 51)
+                -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(470,15) std::__copy_move_a2<true, std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::vector<float, std::allocator<float>>::pointer>(std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::vector<float, std::allocator<float>>::pointer) (isz = 27) (sz = 38)
+                  -> INLINE (MANUAL): (438,18) std::__copy_move_a<true, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type>(std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type) (isz = 14) (sz = 25)
+                    -> INLINE (MANUAL): (401,14) std::__copy_move<true, true, std::iterator_traits<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::pointer>::iterator_category>::__copy_m<float>(const float *, const float *, float *) (isz = 12) (sz = 23)
+                      -> EXTERN: (384,6) __builtin_memmove(void *, const void *, unsigned long)
+                  -> INLINE (MANUAL): (438,46) std::__niter_base<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 1) (sz = 8)
+                    -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::_S_base(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 0) (sz = 5)
+                  -> INLINE (MANUAL): (439,11) std::__niter_base<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 1) (sz = 8)
+                    -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::_S_base(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 0) (sz = 5)
+                  -> INLINE (MANUAL): (440,11) std::__niter_base<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 1) (sz = 8)
+                    -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::_S_base(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 0) (sz = 5)
+                -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(471,9) std::__miter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>) (isz = 3) (sz = 10)
+                  -> INLINE (MANUAL): (294,14) std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>) (isz = 2) (sz = 9)
+                    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator_base_types.h:(224,21) std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::base(const std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *) const (isz = 0) (sz = 6)
+                -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(471,37) std::__miter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>) (isz = 3) (sz = 10)
+                  -> INLINE (MANUAL): (294,14) std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>) (isz = 2) (sz = 9)
+                    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator_base_types.h:(224,21) std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::base(const std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *) const (isz = 0) (sz = 6)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(303,3) std::__make_move_if_noexcept_iterator<std::_Vector_base<float, std::allocator<float>>::pointer, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 2) (sz = 9)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator.h:(1167,26) std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::iterator_type) (isz = 0) (sz = 6)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(304,3) std::__make_move_if_noexcept_iterator<std::_Vector_base<float, std::allocator<float>>::pointer, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 2) (sz = 9)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_iterator.h:(1167,26) std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::iterator_type) (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(564,21) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *) (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(566,7) std::__uninitialized_default_n_a<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::allocator<float> &) (isz = 26) (sz = 37)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_uninitialized.h:(637,14) std::__uninitialized_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type) (isz = 26) (sz = 35)
+          -> INLINE (MANUAL): (573,14) std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type) (isz = 24) (sz = 33)
+            -> INLINE (MANUAL): (540,11) std::fill_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &) (isz = 20) (sz = 31)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,18) std::__fill_n_a<std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &) (isz = 15) (sz = 26)
+              -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_algobase.h:(805,34) std::__niter_base<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 1) (sz = 8)
+                -> INLINE (MANUAL): (283,14) std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::_S_base(std::_Vector_base<float, std::allocator<float>>::pointer) (isz = 0) (sz = 5)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(567,12) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *) (isz = 1) (sz = 8)
+      -> EXTERN: /usr/include/c++/5/bits/vector.tcc:(569,8) __cxa_begin_catch
+      -> EXTERN: /usr/include/c++/5/bits/vector.tcc:(570,3) __cxa_end_catch
+      -> DELETED: /usr/include/c++/5/bits/vector.tcc:(571,5) std::_Destroy<std::_Vector_base<float, std::allocator<float>>::pointer, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::allocator<float> &) (isz = 0) (sz = 8)
+      -> /usr/include/c++/5/bits/vector.tcc:(572,5) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *) (isz = 1) (sz = 8)
+         [[ Callee not marked with inlining pragma  <2>]]
+      -> /usr/include/c++/5/bits/vector.tcc:(573,5) std::_Vector_base<float, std::allocator<float>>::_M_deallocate(std::_Vector_base<float, std::allocator<float>> *, std::_Vector_base<float, std::allocator<float>>::pointer, std::size_t) (isz = 4) (sz = 13)
+         [[ Callee not marked with inlining pragma  <2>]]
+      -> EXTERN: /usr/include/c++/5/bits/vector.tcc:(574,5) __cxa_rethrow
+      -> DELETED: /usr/include/c++/5/bits/vector.tcc:(576,8) std::_Destroy<std::_Vector_base<float, std::allocator<float>>::pointer, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::allocator<float> &) (isz = 0) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(577,8) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *) (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(578,8) std::_Vector_base<float, std::allocator<float>>::_M_deallocate(std::_Vector_base<float, std::allocator<float>> *, std::_Vector_base<float, std::allocator<float>>::pointer, std::size_t) (isz = 4) (sz = 13)
+        -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(178,4) std::allocator_traits<std::allocator<float>>::deallocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::pointer, std::allocator_traits<std::allocator<float>>::size_type) (isz = 0) (sz = 9)
+          -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(517,13) __gnu_cxx::new_allocator<float>::deallocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::pointer, __gnu_cxx::new_allocator<float>::size_type) (isz = 0) (sz = 7)
+            -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(110,9) operator delete(void *)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(676,35) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(677,24) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(678,4) std::vector<float, std::allocator<float>>::_M_erase_at_end(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::pointer) (isz = 13) (sz = 20)
+      -> EXTERN: (1437,7) __cxa_call_unexpected
+      -> DELETED: (1438,2) std::_Destroy<std::_Vector_base<float, std::allocator<float>>::pointer, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::allocator<float> &) (isz = 0) (sz = 8)
+      -> INLINE (MANUAL): (1438,48) std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(std::_Vector_base<float, std::allocator<float>> *) (isz = 1) (sz = 8)
+  -> INLINE (MANUAL): (26,32) std::vector<int, std::allocator<int>>::front(std::vector<int, std::allocator<int>> *) (isz = 16) (sz = 23)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(852,16) __gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>>::operator*(const __gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>> *) const (isz = 0) (sz = 7)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(852,17) std::vector<int, std::allocator<int>>::begin(std::vector<int, std::allocator<int>> *) (isz = 8) (sz = 15)
+      -> INLINE (MANUAL): (548,25) __gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>>::__normal_iterator(__gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>> *, const std::vector<int, std::allocator<int>>::pointer &) (isz = 0) (sz = 7)
+  -> INLINE (MANUAL): (27,35) std::vector<float, std::allocator<float>>::front(std::vector<float, std::allocator<float>> *) (isz = 16) (sz = 23)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(852,16) __gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>>::operator*(const __gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>> *) const (isz = 0) (sz = 7)
+    -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(852,17) std::vector<float, std::allocator<float>>::begin(std::vector<float, std::allocator<float>> *) (isz = 8) (sz = 15)
+      -> INLINE (MANUAL): (548,25) __gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>>::__normal_iterator(__gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>> *, const std::vector<float, std::allocator<float>>::pointer &) (isz = 0) (sz = 7)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(24,17)
+   remark #25408: memset generated
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(24,17)
+      remark #17108: loop was not parallelized: insufficient computational work
+      remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 8
+      remark #15309: vectorization support: normalized vectorization overhead 0.667
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 3 
+      remark #15477: vector cost: 0.750 
+      remark #15478: estimated potential speedup: 3.270 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(24,17)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      remark #25015: Estimate of max trip count of loop=24
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(24,17)
+   remark #25408: memset generated
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(24,17)
+      remark #17108: loop was not parallelized: insufficient computational work
+      remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 8
+      remark #15309: vectorization support: normalized vectorization overhead 0.667
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 3 
+      remark #15477: vector cost: 0.750 
+      remark #15478: estimated potential speedup: 3.270 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(24,17)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      remark #25015: Estimate of max trip count of loop=24
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(25,20)
+   remark #25408: memset generated
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(25,20)
+      remark #17108: loop was not parallelized: insufficient computational work
+      remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 8
+      remark #15309: vectorization support: normalized vectorization overhead 0.667
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 4 
+      remark #15477: vector cost: 0.750 
+      remark #15478: estimated potential speedup: 4.360 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(25,20)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      remark #25015: Estimate of max trip count of loop=24
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(25,20)
+   remark #25408: memset generated
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #17106: parallel dependence: assumed OUTPUT dependence between *__first (770:3) and *__first (770:3)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(25,20)
+      remark #17108: loop was not parallelized: insufficient computational work
+      remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 8
+      remark #15309: vectorization support: normalized vectorization overhead 0.667
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 4 
+      remark #15477: vector cost: 0.750 
+      remark #15478: estimated potential speedup: 4.360 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7) inlined into siftdesc.cpp(25,20)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      remark #25015: Estimate of max trip count of loop=24
+   LOOP END
+LOOP END
+
+LOOP BEGIN at siftdesc.cpp(30,4)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 8  
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/stl_algobase.h(384,6):remark #34014: optimization advice for memmove: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(384,6):remark #34014: optimization advice for memmove: increase the source's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(384,6):remark #34026: call to memmove implemented as a call to optimized library version
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34014: optimization advice for memset: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34026: call to memset implemented as a call to optimized library version
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34014: optimization advice for memset: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34026: call to memset implemented as a call to optimized library version
+/usr/include/c++/5/bits/stl_algobase.h(384,6):remark #34014: optimization advice for memmove: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(384,6):remark #34014: optimization advice for memmove: increase the source's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(384,6):remark #34026: call to memmove implemented as a call to optimized library version
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34014: optimization advice for memset: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34026: call to memset implemented as a call to optimized library version
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34014: optimization advice for memset: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+/usr/include/c++/5/bits/stl_algobase.h(770,3):remark #34026: call to memset implemented as a call to optimized library version
+siftdesc.cpp(19,1):remark #34051: REGISTER ALLOCATION : [_ZN14SIFTDescriptor24precomputeBinsAndWeightsEv] siftdesc.cpp:19
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   20[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm5]
+        
+    Routine temporaries
+        Total         :     259
+            Global    :     106
+            Local     :     153
+        Regenerable   :      19
+        Spilled       :      11
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      48 bytes*
+            Reads     :      17 [1.94e-01 ~ 0.1%]
+            Writes    :      17 [1.94e-01 ~ 0.1%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Destroy_aux<true>::__destroy<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Destroy_aux<true>::__destroy<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_construct.h(112,55)
+
+===========================================================================
+
+Begin optimization report for: std::_Destroy_aux<true>::__destroy<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Destroy_aux<true>::__destroy<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_construct.h(112,55)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_copy<true>::__uninit_copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_copy<true>::__uninit_copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_uninitialized.h(93,9)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_copy<true>::__uninit_copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_copy<true>::__uninit_copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_uninitialized.h(93,9)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type)) /usr/include/c++/5/bits/stl_uninitialized.h(536,9)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_default_n_1<true>::__uninit_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type)) /usr/include/c++/5/bits/stl_uninitialized.h(536,9)
+
+===========================================================================
+
+Begin optimization report for: std::allocator_traits<std::allocator<int>>::allocate(std::allocator_traits<std::allocator<int>>::allocator_type &, std::allocator_traits<std::allocator<int>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::allocator_traits<std::allocator<int>>::allocate(std::allocator_traits<std::allocator<int>>::allocator_type &, std::allocator_traits<std::allocator<int>>::size_type)) /usr/include/c++/5/bits/alloc_traits.h(491,7)
+
+===========================================================================
+
+Begin optimization report for: std::allocator_traits<std::allocator<int>>::deallocate(std::allocator_traits<std::allocator<int>>::allocator_type &, std::allocator_traits<std::allocator<int>>::pointer, std::allocator_traits<std::allocator<int>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::allocator_traits<std::allocator<int>>::deallocate(std::allocator_traits<std::allocator<int>>::allocator_type &, std::allocator_traits<std::allocator<int>>::pointer, std::allocator_traits<std::allocator<int>>::size_type)) /usr/include/c++/5/bits/alloc_traits.h(517,7)
+
+===========================================================================
+
+Begin optimization report for: std::allocator_traits<std::allocator<int>>::max_size(const std::allocator_traits<std::allocator<int>>::allocator_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::allocator_traits<std::allocator<int>>::max_size(const std::allocator_traits<std::allocator<int>>::allocator_type &)) /usr/include/c++/5/bits/alloc_traits.h(551,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(const std::_Vector_base<int, std::allocator<int>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Vector_base<int, std::allocator<int>>::_M_get_Tp_allocator(const std::_Vector_base<int, std::allocator<int>> *) const) /usr/include/c++/5/bits/stl_vector.h(118,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<int, std::allocator<int>>::_M_allocate(std::_Vector_base<int, std::allocator<int>> *, std::size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Vector_base<int, std::allocator<int>>::_M_allocate(std::_Vector_base<int, std::allocator<int>> *, std::size_t)) /usr/include/c++/5/bits/stl_vector.h(168,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::begin(std::vector<int, std::allocator<int>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::begin(std::vector<int, std::allocator<int>> *)) /usr/include/c++/5/bits/stl_vector.h(548,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::size(const std::vector<int, std::allocator<int>> *) const) /usr/include/c++/5/bits/stl_vector.h(655,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::max_size(const std::vector<int, std::allocator<int>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::max_size(const std::vector<int, std::allocator<int>> *) const) /usr/include/c++/5/bits/stl_vector.h(660,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::resize(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::resize(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type)) /usr/include/c++/5/bits/stl_vector.h(674,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::front(std::vector<int, std::allocator<int>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::front(std::vector<int, std::allocator<int>> *)) /usr/include/c++/5/bits/stl_vector.h(852,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::_M_default_append(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::_M_default_append(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type)) /usr/include/c++/5/bits/vector.tcc(542,5)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::_M_check_len(const std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type, const char *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::_M_check_len(const std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::size_type, const char *) const) /usr/include/c++/5/bits/stl_vector.h(1423,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<int, std::allocator<int>>::_M_erase_at_end(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<int, std::allocator<int>>::_M_erase_at_end(std::vector<int, std::allocator<int>> *, std::vector<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_vector.h(1437,7)
+
+===========================================================================
+
+Begin optimization report for: std::allocator_traits<std::allocator<float>>::allocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::allocator_traits<std::allocator<float>>::allocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::size_type)) /usr/include/c++/5/bits/alloc_traits.h(491,7)
+
+===========================================================================
+
+Begin optimization report for: std::allocator_traits<std::allocator<float>>::deallocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::pointer, std::allocator_traits<std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::allocator_traits<std::allocator<float>>::deallocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::pointer, std::allocator_traits<std::allocator<float>>::size_type)) /usr/include/c++/5/bits/alloc_traits.h(517,7)
+
+===========================================================================
+
+Begin optimization report for: std::allocator_traits<std::allocator<float>>::max_size(const std::allocator_traits<std::allocator<float>>::allocator_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::allocator_traits<std::allocator<float>>::max_size(const std::allocator_traits<std::allocator<float>>::allocator_type &)) /usr/include/c++/5/bits/alloc_traits.h(551,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(const std::_Vector_base<float, std::allocator<float>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Vector_base<float, std::allocator<float>>::_M_get_Tp_allocator(const std::_Vector_base<float, std::allocator<float>> *) const) /usr/include/c++/5/bits/stl_vector.h(118,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<float, std::allocator<float>>::_M_allocate(std::_Vector_base<float, std::allocator<float>> *, std::size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Vector_base<float, std::allocator<float>>::_M_allocate(std::_Vector_base<float, std::allocator<float>> *, std::size_t)) /usr/include/c++/5/bits/stl_vector.h(168,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::begin(std::vector<float, std::allocator<float>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::begin(std::vector<float, std::allocator<float>> *)) /usr/include/c++/5/bits/stl_vector.h(548,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const) /usr/include/c++/5/bits/stl_vector.h(655,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::max_size(const std::vector<float, std::allocator<float>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::max_size(const std::vector<float, std::allocator<float>> *) const) /usr/include/c++/5/bits/stl_vector.h(660,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::resize(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::resize(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)) /usr/include/c++/5/bits/stl_vector.h(674,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)) /usr/include/c++/5/bits/stl_vector.h(780,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::front(std::vector<float, std::allocator<float>> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::front(std::vector<float, std::allocator<float>> *)) /usr/include/c++/5/bits/stl_vector.h(852,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::_M_default_append(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::_M_default_append(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)) /usr/include/c++/5/bits/vector.tcc(542,5)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::_M_check_len(const std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type, const char *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::_M_check_len(const std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type, const char *) const) /usr/include/c++/5/bits/stl_vector.h(1423,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::_M_erase_at_end(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::_M_erase_at_end(std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_vector.h(1437,7)
+
+===========================================================================
+
+Begin optimization report for: std::__copy_move<true, true, std::iterator_traits<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::pointer>::iterator_category>::__copy_m<int>(const int *, const int *, int *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__copy_move<true, true, std::iterator_traits<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::pointer>::iterator_category>::__copy_m<int>(const int *, const int *, int *)) /usr/include/c++/5/bits/stl_algobase.h(374,9)
+
+===========================================================================
+
+Begin optimization report for: std::__copy_move<true, true, std::iterator_traits<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::pointer>::iterator_category>::__copy_m<float>(const float *, const float *, float *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__copy_move<true, true, std::iterator_traits<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::pointer>::iterator_category>::__copy_m<float>(const float *, const float *, float *)) /usr/include/c++/5/bits/stl_algobase.h(374,9)
+
+===========================================================================
+
+Begin optimization report for: std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::_S_base(std::_Vector_base<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::_S_base(std::_Vector_base<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_iterator_base_types.h(216,7)
+
+===========================================================================
+
+Begin optimization report for: std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::iterator_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::iterator_type)) /usr/include/c++/5/bits/stl_iterator.h(985,25)
+
+===========================================================================
+
+Begin optimization report for: std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::base(const std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>::base(const std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer> *) const) /usr/include/c++/5/bits/stl_iterator.h(993,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>)) /usr/include/c++/5/bits/stl_iterator_base_types.h(224,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::_S_base(std::_Vector_base<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::_S_base(std::_Vector_base<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_iterator_base_types.h(216,7)
+
+===========================================================================
+
+Begin optimization report for: std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::iterator_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::move_iterator(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::iterator_type)) /usr/include/c++/5/bits/stl_iterator.h(985,25)
+
+===========================================================================
+
+Begin optimization report for: std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::base(const std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::base(const std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer> *) const) /usr/include/c++/5/bits/stl_iterator.h(993,7)
+
+===========================================================================
+
+Begin optimization report for: std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::_S_base(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>)) /usr/include/c++/5/bits/stl_iterator_base_types.h(224,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<int>::allocate(__gnu_cxx::new_allocator<int> *, __gnu_cxx::new_allocator<int>::size_type, const void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<int>::allocate(__gnu_cxx::new_allocator<int> *, __gnu_cxx::new_allocator<int>::size_type, const void *)) /usr/include/c++/5/ext/new_allocator.h(100,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<int>::deallocate(__gnu_cxx::new_allocator<int> *, __gnu_cxx::new_allocator<int>::pointer, __gnu_cxx::new_allocator<int>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<int>::deallocate(__gnu_cxx::new_allocator<int> *, __gnu_cxx::new_allocator<int>::pointer, __gnu_cxx::new_allocator<int>::size_type)) /usr/include/c++/5/ext/new_allocator.h(110,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>>::__normal_iterator(__gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>> *, const std::vector<int, std::allocator<int>>::pointer &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>>::__normal_iterator(__gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>> *, const std::vector<int, std::allocator<int>>::pointer &)) /usr/include/c++/5/bits/stl_iterator.h(741,25)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>>::operator*(const __gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>>::operator*(const __gnu_cxx::__normal_iterator<std::vector<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>> *) const) /usr/include/c++/5/bits/stl_iterator.h(754,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<float>::allocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::size_type, const void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<float>::allocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::size_type, const void *)) /usr/include/c++/5/ext/new_allocator.h(100,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::new_allocator<float>::deallocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::pointer, __gnu_cxx::new_allocator<float>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::new_allocator<float>::deallocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::pointer, __gnu_cxx::new_allocator<float>::size_type)) /usr/include/c++/5/ext/new_allocator.h(110,7)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>>::__normal_iterator(__gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>> *, const std::vector<float, std::allocator<float>>::pointer &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>>::__normal_iterator(__gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>> *, const std::vector<float, std::allocator<float>>::pointer &)) /usr/include/c++/5/bits/stl_iterator.h(741,25)
+
+===========================================================================
+
+Begin optimization report for: __gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>>::operator*(const __gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>> *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>>::operator*(const __gnu_cxx::__normal_iterator<std::vector<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>> *) const) /usr/include/c++/5/bits/stl_iterator.h(754,7)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::at<float>(cv::Mat *, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::at<float>(cv::Mat *, int, int)) /usr/local/include/opencv2/core/mat.inl.hpp(952,1)
+
+===========================================================================
+
+Begin optimization report for: std::atan2(float, float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::atan2(float, float)) /usr/include/c++/5/cmath(164,3)
+
+===========================================================================
+
+Begin optimization report for: std::sqrt(float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::sqrt(float)) /usr/include/c++/5/cmath(483,3)
+
+===========================================================================
+
+Begin optimization report for: std::min<int>(const int &, const int &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::min<int>(const int &, const int &)) /usr/include/c++/5/bits/stl_algobase.h(196,5)
+
+===========================================================================
+
+Begin optimization report for: std::max<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type>(const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &, const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::max<std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type>(const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &, const std::vector<std::seed_seq::result_type, std::allocator<std::seed_seq::result_type>>::size_type &)) /usr/include/c++/5/bits/stl_algobase.h(220,5)
+
+===========================================================================
+
+Begin optimization report for: std::_Destroy<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Destroy<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_construct.h(123,5)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_default_n_a<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::allocator<int> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_default_n_a<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, int>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::allocator<int> &)) /usr/include/c++/5/bits/stl_uninitialized.h(637,5)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_default_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type)) /usr/include/c++/5/bits/stl_uninitialized.h(567,5)
+
+===========================================================================
+
+Begin optimization report for: std::fill_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::fill_n<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &)) /usr/include/c++/5/bits/stl_algobase.h(801,5)
+
+===========================================================================
+
+Begin optimization report for: std::__niter_base<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__niter_base<std::_Vector_base<int, std::allocator<int>>::pointer>(std::_Vector_base<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_algobase.h(283,5)
+
+===========================================================================
+
+Begin optimization report for: std::__fill_n_a<std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::__fill_n_a<std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::vector<int, std::allocator<int>>::size_type, const std::iterator_traits<std::vector<int, std::allocator<int>>::pointer>::value_type &)) [75/98=76.5%] /usr/include/c++/5/bits/stl_algobase.h(766,5)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7)
+<Peeled loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   remark #25015: Estimate of max trip count of loop=15
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7)
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 16
+   remark #15309: vectorization support: normalized vectorization overhead 1.857
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 0.430 
+   remark #15478: estimated potential speedup: 5.140 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   remark #15305: vectorization support: vector length 4
+   remark #15309: vectorization support: normalized vectorization overhead 2.143
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/stl_algobase.h(766,5):remark #34051: REGISTER ALLOCATION : [_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr3std11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_] /usr/include/c++/5/bits/stl_algobase.h:766
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    9[ rax rdx rcx rsi rdi r8-r10 zmm0]
+        
+    Routine temporaries
+        Total         :      30
+            Global    :      18
+            Local     :      12
+        Regenerable   :       1
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_move_if_noexcept_a<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::_Tp_alloc_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::_Tp_alloc_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_move_if_noexcept_a<std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::_Tp_alloc_type>(std::_Vector_base<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::pointer, std::vector<int, std::allocator<int>>::pointer, std::_Vector_base<int, std::allocator<int>>::_Tp_alloc_type &)) /usr/include/c++/5/bits/stl_uninitialized.h(301,5)
+
+===========================================================================
+
+Begin optimization report for: std::__make_move_if_noexcept_iterator<std::_Vector_base<int, std::allocator<int>>::pointer, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::_Vector_base<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__make_move_if_noexcept_iterator<std::_Vector_base<int, std::allocator<int>>::pointer, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::_Vector_base<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_iterator.h(1167,5)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_copy_a<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer, int>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer, std::allocator<int> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_copy_a<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer, int>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer, std::allocator<int> &)) /usr/include/c++/5/bits/stl_uninitialized.h(281,5)
+
+===========================================================================
+
+Begin optimization report for: std::uninitialized_copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::uninitialized_copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_uninitialized.h(109,5)
+
+===========================================================================
+
+Begin optimization report for: std::copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::copy<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, std::vector<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_algobase.h(463,5)
+
+===========================================================================
+
+Begin optimization report for: std::__miter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__miter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>>(std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>)) /usr/include/c++/5/bits/stl_algobase.h(294,5)
+
+===========================================================================
+
+Begin optimization report for: std::__copy_move_a2<true, std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::vector<int, std::allocator<int>>::pointer>(std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::vector<int, std::allocator<int>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__copy_move_a2<true, std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::vector<int, std::allocator<int>>::pointer>(std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::_Iter_base<std::move_iterator<std::_Vector_base<int, std::allocator<int>>::pointer>, true>::iterator_type, std::vector<int, std::allocator<int>>::pointer)) /usr/include/c++/5/bits/stl_algobase.h(437,5)
+
+===========================================================================
+
+Begin optimization report for: std::__copy_move_a<true, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type>(std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__copy_move_a<true, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type>(std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<int, std::allocator<int>>::pointer, false>::iterator_type)) /usr/include/c++/5/bits/stl_algobase.h(392,5)
+
+===========================================================================
+
+Begin optimization report for: std::_Destroy<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::_Destroy<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_construct.h(123,5)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_default_n_a<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::allocator<float> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_default_n_a<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, float>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::allocator<float> &)) /usr/include/c++/5/bits/stl_uninitialized.h(637,5)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_default_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type)) /usr/include/c++/5/bits/stl_uninitialized.h(567,5)
+
+===========================================================================
+
+Begin optimization report for: std::fill_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::fill_n<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &)) /usr/include/c++/5/bits/stl_algobase.h(801,5)
+
+===========================================================================
+
+Begin optimization report for: std::__niter_base<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__niter_base<std::_Vector_base<float, std::allocator<float>>::pointer>(std::_Vector_base<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_algobase.h(283,5)
+
+===========================================================================
+
+Begin optimization report for: std::__fill_n_a<std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::__fill_n_a<std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type>(std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::vector<float, std::allocator<float>>::size_type, const std::iterator_traits<std::_Vector_base<float, std::allocator<float>>::pointer>::value_type &)) [89/98=90.8%] /usr/include/c++/5/bits/stl_algobase.h(766,5)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7)
+<Peeled loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   remark #25015: Estimate of max trip count of loop=15
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7)
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 16
+   remark #15309: vectorization support: normalized vectorization overhead 1.857
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 4 
+   remark #15477: vector cost: 0.430 
+   remark #15478: estimated potential speedup: 6.410 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference *__first has unaligned access   [ /usr/include/c++/5/bits/stl_algobase.h(770,3) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 4
+   remark #15309: vectorization support: normalized vectorization overhead 2.143
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/5/bits/stl_algobase.h(768,7)
+<Remainder loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/stl_algobase.h(766,5):remark #34051: REGISTER ALLOCATION : [_ZSt10__fill_n_aIPfmfEN9__gnu_cxx11__enable_ifIXsr3std11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_] /usr/include/c++/5/bits/stl_algobase.h:766
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    9[ rax rdx rcx rsi rdi r8-r9 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      34
+            Global    :      21
+            Local     :      13
+        Regenerable   :       1
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_move_if_noexcept_a<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::_Tp_alloc_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::_Tp_alloc_type &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_move_if_noexcept_a<std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::_Tp_alloc_type>(std::_Vector_base<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::pointer, std::vector<float, std::allocator<float>>::pointer, std::_Vector_base<float, std::allocator<float>>::_Tp_alloc_type &)) /usr/include/c++/5/bits/stl_uninitialized.h(301,5)
+
+===========================================================================
+
+Begin optimization report for: std::__make_move_if_noexcept_iterator<std::_Vector_base<float, std::allocator<float>>::pointer, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::_Vector_base<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__make_move_if_noexcept_iterator<std::_Vector_base<float, std::allocator<float>>::pointer, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::_Vector_base<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_iterator.h(1167,5)
+
+===========================================================================
+
+Begin optimization report for: std::__uninitialized_copy_a<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer, float>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer, std::allocator<float> &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__uninitialized_copy_a<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer, float>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer, std::allocator<float> &)) /usr/include/c++/5/bits/stl_uninitialized.h(281,5)
+
+===========================================================================
+
+Begin optimization report for: std::uninitialized_copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::uninitialized_copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_uninitialized.h(109,5)
+
+===========================================================================
+
+Begin optimization report for: std::copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::copy<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, std::vector<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_algobase.h(463,5)
+
+===========================================================================
+
+Begin optimization report for: std::__miter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__miter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>>(std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>)) /usr/include/c++/5/bits/stl_algobase.h(294,5)
+
+===========================================================================
+
+Begin optimization report for: std::__copy_move_a2<true, std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::vector<float, std::allocator<float>>::pointer>(std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::vector<float, std::allocator<float>>::pointer)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__copy_move_a2<true, std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::vector<float, std::allocator<float>>::pointer>(std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::_Iter_base<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>, true>::iterator_type, std::vector<float, std::allocator<float>>::pointer)) /usr/include/c++/5/bits/stl_algobase.h(437,5)
+
+===========================================================================
+
+Begin optimization report for: std::__copy_move_a<true, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type>(std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__copy_move_a<true, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type>(std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type, std::_Iter_base<std::_Vector_base<float, std::allocator<float>>::pointer, false>::iterator_type)) /usr/include/c++/5/bits/stl_algobase.h(392,5)
+
+===========================================================================
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [98/98=100.0%] <compiler generated>
+  -> EXTERN: /usr/include/c++/5/iostream:(74,25) __cxa_atexit()
+  -> EXTERN: /usr/include/c++/5/iostream:(74,25) std::ios_base::Init::Init(std::ios_base::Init *)
+
+
+    Report from: Code generation optimizations [cg]
+
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [__sti__$E] (null):0
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      13
+            Global    :       7
+            Local     :       6
+        Regenerable   :       7
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> The function is larger than the inliner would normally inline.  Use the
+    option -inline-max-size to increase the size of any function that would
+    normally be inlined, add "inline __attribute__((always_inline))" to the
+    declaration of the called function, or add "#pragma forceinline" before
+    the call site.
+
+<2> The compiler's heuristics indicate that the function is not profitable to 
+    inline.  Override this decision by adding "inline 
+    __attribute__((always_inline))" to the declaration of the called function, 
+    or add "#pragma forceinline" before the call site.
+

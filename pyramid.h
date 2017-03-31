@@ -10,8 +10,8 @@
 #ifndef __PYRAMID_H__
 #define __PYRAMID_H__
 
-#include <cv.h>
-#include <highgui.h>
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 using namespace cv;
 
@@ -29,14 +29,28 @@ struct PyramidParams
    float edgeEigenValueRatio;
    // number of pixels ignored at the border of image
    int  border;
+   std::vector<float> sigmas;
    PyramidParams()
-      {
+   	   {
          upscaleInputImage = 0;
          numberOfScales = 3;
          initialSigma = 1.6f;
          threshold = 16.0f/3.0f; //0.04f * 256 / 3;
          edgeEigenValueRatio = 10.0f;
          border = 5;
+         float currSigma = initialSigma;
+         float sigmaStep = pow(2.0f, 1.0f / (float) numberOfScales);
+         sigmas.reserve(numberOfScales+2);
+         sigmas.push_back(0); //neverused
+         sigmas.push_back(initialSigma);
+         for(size_t i=2; i<numberOfScales+2; i++){
+        	 sigmas.push_back(sigmas[i-1]*sigmaStep);
+         }
+         std::cout<<"numberOfScales="<<numberOfScales<<std::endl;
+         std::cout<<"size="<<sigmas.size()<<std::endl;
+         for(size_t i=1; i<sigmas.size(); i++){
+        	 std::cout<<"sigmas="<<sigmas[i]<<std::endl;
+         }
       }
 };
 
@@ -44,6 +58,7 @@ class HessianKeypointCallback
 {
 public:
    virtual void onHessianKeypointDetected(const Mat &blur, float x, float y, float s, float pixelDistance, int type, float response) = 0;
+   virtual ~HessianKeypointCallback(){}
 };
 
 struct HessianDetector
@@ -61,9 +76,9 @@ public:
       // thresholds are squared, response of det H is proportional to square of derivatives!
       finalThreshold(par.threshold * par.threshold),
       positiveThreshold(0.8 * finalThreshold),
-      negativeThreshold(-positiveThreshold) 
+      negativeThreshold(-positiveThreshold),
+	  par(par)
       {
-         this->par = par;  
          hessianKeypointCallback = 0;
       }
    void setHessianKeypointCallback(HessianKeypointCallback *callback)
@@ -74,8 +89,10 @@ public:
    
 protected:   
    void detectOctaveKeypoints(const Mat &firstLevel, float pixelDistance, Mat &nextOctaveFirstLevel);
-   void localizeKeypoint(int r, int c, float curScale, float pixelDistance);
-   void findLevelKeypoints(float curScale, float pixelDistance);
+   void localizeKeypoint(int r, int c, float curScale, float pixelDistance,
+		   const Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low);
+   void findLevelKeypoints(float curScale, float pixelDistance ,
+		   const cv::Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low);
    Mat hessianResponse(const Mat &inputImage, float norm);
    
 private:
@@ -87,8 +104,7 @@ private:
 
    // temporary arrays used by protected functions
    Mat octaveMap;
-   Mat prevBlur, blur;
-   Mat low, cur, high;
+   Mat low, cur;
 };
 
 #endif // __PYRAMID_H__

@@ -1,0 +1,2186 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 17.0.1.132 Build 20161005
+
+Compiler options: -I /opt/intel/advisor_2017.1.1.486553/include/ -I/home/luca/ParallelOpenCV/include -O3 -g -qopt-report=5 -simd -Bdynamic -parallel -qopenmp -parallel-source-info=2 -ldl -qopenmp-link dynamic -debug inline-debug-info -shared-intel -xCORE-AVX2 -Wall -std=c++11 -c -o pyramid.o
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: __annotate_site_beginA_t_nop(const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_site_beginA_t_nop(const char *)) [1/71=1.4%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(240,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(240,1):remark #34051: REGISTER ALLOCATION : [__annotate_site_beginA_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:240
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_site_end_2_t_nop()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_site_end_2_t_nop()) [2/71=2.8%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(241,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(241,1):remark #34051: REGISTER ALLOCATION : [__annotate_site_end_2_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:241
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    0[ reg_null]
+        
+    Routine temporaries
+        Total         :       6
+            Global    :       0
+            Local     :       6
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_task_beginA_t_nop(const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_task_beginA_t_nop(const char *)) [3/71=4.2%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(242,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(242,1):remark #34051: REGISTER ALLOCATION : [__annotate_task_beginA_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:242
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_task_end_2_t_nop()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_task_end_2_t_nop()) [4/71=5.6%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(243,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(243,1):remark #34051: REGISTER ALLOCATION : [__annotate_task_end_2_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:243
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    0[ reg_null]
+        
+    Routine temporaries
+        Total         :       6
+            Global    :       0
+            Local     :       6
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_iteration_taskA_t_nop(const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_iteration_taskA_t_nop(const char *)) [5/71=7.0%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(244,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(244,1):remark #34051: REGISTER ALLOCATION : [__annotate_iteration_taskA_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:244
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_lock_acquire_2_t_nop(void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_lock_acquire_2_t_nop(void *)) [6/71=8.5%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(245,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(245,1):remark #34051: REGISTER ALLOCATION : [__annotate_lock_acquire_2_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:245
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_lock_release_2_t_nop(void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_lock_release_2_t_nop(void *)) [7/71=9.9%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(246,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(246,1):remark #34051: REGISTER ALLOCATION : [__annotate_lock_release_2_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:246
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_record_allocation_t_nop(void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_record_allocation_t_nop(void *, size_t)) [8/71=11.3%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(247,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(247,1):remark #34051: REGISTER ALLOCATION : [__annotate_record_allocation_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:247
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ rsi rdi]
+        
+    Routine temporaries
+        Total         :       8
+            Global    :       0
+            Local     :       8
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_record_deallocation_t_nop(void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_record_deallocation_t_nop(void *)) [9/71=12.7%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(248,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(248,1):remark #34051: REGISTER ALLOCATION : [__annotate_record_deallocation_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:248
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_induction_uses_t_nop(void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_induction_uses_t_nop(void *, size_t)) [10/71=14.1%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(249,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(249,1):remark #34051: REGISTER ALLOCATION : [__annotate_induction_uses_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:249
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ rsi rdi]
+        
+    Routine temporaries
+        Total         :       8
+            Global    :       0
+            Local     :       8
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_reduction_uses_t_nop(void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_reduction_uses_t_nop(void *, size_t)) [11/71=15.5%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(250,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(250,1):remark #34051: REGISTER ALLOCATION : [__annotate_reduction_uses_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:250
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ rsi rdi]
+        
+    Routine temporaries
+        Total         :       8
+            Global    :       0
+            Local     :       8
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_observe_uses_t_nop(void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_observe_uses_t_nop(void *, size_t)) [12/71=16.9%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(251,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(251,1):remark #34051: REGISTER ALLOCATION : [__annotate_observe_uses_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:251
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ rsi rdi]
+        
+    Routine temporaries
+        Total         :       8
+            Global    :       0
+            Local     :       8
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_clear_uses_t_nop(void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_clear_uses_t_nop(void *)) [13/71=18.3%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(252,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(252,1):remark #34051: REGISTER ALLOCATION : [__annotate_clear_uses_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:252
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_disable_push_t_nop(__itt_model_disable)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_disable_push_t_nop(__itt_model_disable)) [14/71=19.7%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(253,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(253,1):remark #34051: REGISTER ALLOCATION : [__annotate_disable_push_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:253
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_disable_pop_t_nop()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_disable_pop_t_nop()) [15/71=21.1%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(254,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(254,1):remark #34051: REGISTER ALLOCATION : [__annotate_disable_pop_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:254
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    0[ reg_null]
+        
+    Routine temporaries
+        Total         :       6
+            Global    :       0
+            Local     :       6
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_aggregate_task_t_nop(size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_aggregate_task_t_nop(size_t)) [16/71=22.5%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(255,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(255,1):remark #34051: REGISTER ALLOCATION : [__annotate_aggregate_task_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:255
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rdi]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_is_collection_disabled_t_nop()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_is_collection_disabled_t_nop()) [17/71=23.9%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(256,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(256,1):remark #34051: REGISTER ALLOCATION : [__annotate_is_collection_disabled_t_nop] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:256
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    1[ rax]
+        
+    Routine temporaries
+        Total         :       7
+            Global    :       0
+            Local     :       7
+        Regenerable   :       1
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_routines()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (__annotate_routines()) /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(285,1)
+
+===========================================================================
+
+Begin optimization report for: getHessianPointType(const float *, float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (getHessianPointType(const float *, float)) [19/71=26.8%] pyramid.cpp(28,1)
+
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(28,1):remark #34051: REGISTER ALLOCATION : [_Z19getHessianPointTypePKff] pyramid.cpp:28
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdi zmm0-zmm3]
+        
+    Routine temporaries
+        Total         :      20
+            Global    :       8
+            Local     :      12
+        Regenerable   :       3
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: isMax(float, const cv::Mat &, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (isMax(float, const cv::Mat &, int, int)) [20/71=28.2%] pyramid.cpp(43,1)
+  -> INLINE (MANUAL): (46,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at pyramid.cpp(44,4)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(49,20) ]
+
+   LOOP BEGIN at pyramid.cpp(47,7)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(49,20) ]
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(43,1):remark #34051: REGISTER ALLOCATION : [_Z5isMaxfRKN2cv3MatEii] pyramid.cpp:43
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   11[ rax rdx rcx rsi rdi r8-r11 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      30
+            Global    :      20
+            Local     :      10
+        Regenerable   :       2
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: isMin(float, const cv::Mat &, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (isMin(float, const cv::Mat &, int, int)) [21/71=29.6%] pyramid.cpp(55,1)
+  -> INLINE (MANUAL): (58,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at pyramid.cpp(56,4)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(61,20) ]
+
+   LOOP BEGIN at pyramid.cpp(59,7)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(61,20) ]
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(55,1):remark #34051: REGISTER ALLOCATION : [_Z5isMinfRKN2cv3MatEii] pyramid.cpp:55
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   10[ rax rdx rcx rsi rdi r8-r11 zmm0]
+        
+    Routine temporaries
+        Total         :      29
+            Global    :      20
+            Local     :       9
+        Regenerable   :       2
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::~Mat(cv::Mat *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (cv::Mat::~Mat(cv::Mat *)) [22/71=31.0%] /usr/local/include/opencv2/core/mat.inl.hpp(589,1)
+  -> EXTERN: (589,1) __cxa_call_unexpected
+  -> INLINE (MANUAL): (590,5) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+    -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+  -> EXTERN: (592,9) cv::fastFree(void *)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into /usr/local/include/opencv2/core/mat.inl.hpp(591,5)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/usr/local/include/opencv2/core/mat.inl.hpp(589,1):remark #34051: REGISTER ALLOCATION : [_ZN2cv3MatD1Ev] /usr/local/include/opencv2/core/mat.inl.hpp:589
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdx rcx rsi rdi r14]
+        
+    Routine temporaries
+        Total         :      32
+            Global    :      14
+            Local     :      18
+        Regenerable   :       3
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       8 bytes*
+            Reads     :       2 [0.00e+00 ~ 0.0%]
+            Writes    :       1 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: HessianDetector::localizeKeypoint(HessianDetector *, int, int, float, float, const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (HessianDetector::localizeKeypoint(HessianDetector *, int, int, float, float, const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &)) [23/71=32.4%] pyramid.cpp(127,1)
+  -> EXTERN: (131,15) ?1memset
+  -> INLINE (MANUAL): (141,23) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (141,53) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (141,74) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (142,23) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (142,53) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (142,74) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (143,23) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (143,53) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (143,75) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (145,30) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (145,55) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (145,80) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (145,105) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (154,31) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (154,57) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (154,82) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (154,107) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (155,31) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (155,57) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (155,82) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (155,107) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (162,28) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (162,51) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (163,28) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (163,51) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (164,29) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (164,51) cv::Mat::at<float>(const cv::Mat *, int, int) const (isz = 4) (sz = 14)
+  -> EXTERN: (168,7) solveLinear3x3(float *, float *)
+  -> INLINE (MANUAL): (171,11) std::isnan(float) (isz = 3) (sz = 10)
+    -> EXTERN: /usr/include/c++/5/cmath:(627,12) __isnanf
+  -> INLINE (MANUAL): (171,26) std::isnan(float) (isz = 3) (sz = 10)
+    -> EXTERN: /usr/include/c++/5/cmath:(627,12) __isnanf
+  -> INLINE (MANUAL): (171,41) std::isnan(float) (isz = 3) (sz = 10)
+    -> EXTERN: /usr/include/c++/5/cmath:(627,12) __isnanf
+  -> INLINE (MANUAL): (175,17) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE (MANUAL): (193,8) std::fabs(float) (isz = 0) (sz = 7)
+  -> INLINE (MANUAL): (193,28) std::fabs(float) (isz = 0) (sz = 7)
+  -> INLINE (MANUAL): (193,48) std::fabs(float) (isz = 0) (sz = 7)
+  -> INLINE (MANUAL): (193,68) std::fabs(float) (isz = 0) (sz = 7)
+  -> INLINE (MANUAL): (193,108) cv::Mat::at<unsigned char>(cv::Mat *, int, int) (isz = 3) (sz = 13)
+  -> INLINE (MANUAL): (197,14) cv::Mat::at<unsigned char>(cv::Mat *, int, int) (isz = 3) (sz = 13)
+  -> INLINE (MANUAL): (200,29) std::pow(float, float) (isz = 1) (sz = 10)
+    -> EXTERN: /usr/include/c++/5/cmath:(408,12) __builtin_powf(float, float)
+  -> INLINE: (203,15) getHessianPointType(const float *, float) (isz = 12) (sz = 23)
+  -> INLINE (MANUAL): (203,40) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> INDIRECT- (VIRTUAL): (207,162)  EXPR_CONV.SI64.P64(*((SI64*) ((this_66192_V$307.0.68->hessianKeypointCallback_V$2e1)->__vptr_V$c9 + EXPR_CONV.SI32.I64(0(SI32)) * 8(I64))))
+     [[ Unable to inline indirect callsite  <1>]]
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at pyramid.cpp(136,4)
+   remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form from OpenMP specification
+   remark #17102: loop was not parallelized: not a parallelization candidate
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(131,15):remark #34000: call to memset implemented inline with stores with proven (alignment, offset): (32, 0)
+pyramid.cpp(127,1):remark #34051: REGISTER ALLOCATION : [_ZN15HessianDetector16localizeKeypointEiiffRKN2cv3MatES3_S3_S3_] pyramid.cpp:127
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   30[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :     174
+            Global    :      68
+            Local     :     106
+        Regenerable   :      12
+        Spilled       :      21
+        
+    Routine stack
+        Variables     :      48 bytes*
+            Reads     :       6 [2.13e+00 ~ 1.1%]
+            Writes    :      14 [1.24e+01 ~ 6.3%]
+        Spills        :     128 bytes*
+            Reads     :      32 [1.18e+01 ~ 6.0%]
+            Writes    :      20 [1.66e+01 ~ 8.4%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: HessianDetector::findLevelKeypoints(HessianDetector *, float, float, const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (HessianDetector::findLevelKeypoints(HessianDetector *, float, float, const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &)) [24/71=33.8%] pyramid.cpp(212,1)
+  -> EXTERN: (213,4) __assert_fail(const char *, const char *, unsigned int, const char *)
+  -> INLINE (MANUAL): (220,32) cv::Mat::at<float>(cv::Mat *, int, int) (isz = 4) (sz = 14)
+  -> INLINE: (221,44) isMax(float, const cv::Mat &, int, int) (isz = 41) (sz = 55)
+    -> INLINE (MANUAL): (46,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> INLINE: (221,69) isMax(float, const cv::Mat &, int, int) (isz = 41) (sz = 55)
+    -> INLINE (MANUAL): (46,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> INLINE: (221,94) isMax(float, const cv::Mat &, int, int) (isz = 41) (sz = 55)
+    -> INLINE (MANUAL): (46,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> INLINE: (222,44) isMin(float, const cv::Mat &, int, int) (isz = 41) (sz = 55)
+    -> INLINE (MANUAL): (58,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> INLINE: (222,69) isMin(float, const cv::Mat &, int, int) (isz = 41) (sz = 55)
+    -> INLINE (MANUAL): (58,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> INLINE: (222,94) isMin(float, const cv::Mat &, int, int) (isz = 41) (sz = 55)
+    -> INLINE (MANUAL): (58,30) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> (224,13) HessianDetector::localizeKeypoint(HessianDetector *, int, int, float, float, const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &) (isz = 648) (sz = 676)
+     [[ Inlining would exceed -inline-max-size value (676>253) <2>]]
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at pyramid.cpp(47,7) inlined into pyramid.cpp(221,44)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(48,10) ]
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(47,7) inlined into pyramid.cpp(221,69)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(48,10) ]
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(47,7) inlined into pyramid.cpp(221,94)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(48,10) ]
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(59,7) inlined into pyramid.cpp(222,44)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(60,10) ]
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(59,7) inlined into pyramid.cpp(222,69)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(60,10) ]
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(59,7) inlined into pyramid.cpp(222,94)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ pyramid.cpp(60,10) ]
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at pyramid.cpp(216,4)
+   remark #15536: loop was not vectorized: inner loop throttling prevents vectorization of this outer loop. Refer to inner loop message for more details.   [ pyramid.cpp(44,4) ]
+   remark #17102: loop was not parallelized: not a parallelization candidate
+
+   LOOP BEGIN at pyramid.cpp(218,7)
+      remark #15536: loop was not vectorized: inner loop throttling prevents vectorization of this outer loop. Refer to inner loop message for more details.   [ pyramid.cpp(44,4) ]
+      remark #17102: loop was not parallelized: not a parallelization candidate
+
+      LOOP BEGIN at pyramid.cpp(44,4) inlined into pyramid.cpp(221,44)
+         remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form from OpenMP specification
+         remark #17102: loop was not parallelized: not a parallelization candidate
+      LOOP END
+
+      LOOP BEGIN at pyramid.cpp(44,4) inlined into pyramid.cpp(221,69)
+         remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form from OpenMP specification
+         remark #17102: loop was not parallelized: not a parallelization candidate
+      LOOP END
+
+      LOOP BEGIN at pyramid.cpp(44,4) inlined into pyramid.cpp(221,94)
+         remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form from OpenMP specification
+         remark #17102: loop was not parallelized: not a parallelization candidate
+      LOOP END
+
+      LOOP BEGIN at pyramid.cpp(56,4) inlined into pyramid.cpp(222,44)
+         remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form from OpenMP specification
+         remark #17102: loop was not parallelized: not a parallelization candidate
+      LOOP END
+
+      LOOP BEGIN at pyramid.cpp(56,4) inlined into pyramid.cpp(222,69)
+         remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form from OpenMP specification
+         remark #17102: loop was not parallelized: not a parallelization candidate
+      LOOP END
+
+      LOOP BEGIN at pyramid.cpp(56,4) inlined into pyramid.cpp(222,94)
+         remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form from OpenMP specification
+         remark #17102: loop was not parallelized: not a parallelization candidate
+      LOOP END
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(212,1):remark #34051: REGISTER ALLOCATION : [_ZN15HessianDetector18findLevelKeypointsEffRKN2cv3MatES3_S3_S3_] pyramid.cpp:212
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   17[ rax rdx rcx rbx rbp rsi rdi r8-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :     118
+            Global    :      75
+            Local     :      43
+        Regenerable   :       7
+        Spilled       :      23
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :     160 bytes*
+            Reads     :      50 [6.62e+01 ~ 2.7%]
+            Writes    :      35 [6.63e+01 ~ 2.7%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::char_traits<char>::length(const std::char_traits<char>::char_type *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (std::char_traits<char>::length(const std::char_traits<char>::char_type *)) [27/71=38.0%] /usr/include/c++/5/bits/char_traits.h(267,7)
+  -> EXTERN: (267,16) __builtin_strlen(const char *)
+
+
+    Report from: Code generation optimizations [cg]
+
+/usr/include/c++/5/bits/char_traits.h(267,7):remark #34051: REGISTER ALLOCATION : [_ZNSt11char_traitsIcE6lengthEPKc] /usr/include/c++/5/bits/char_traits.h:267
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rax rdx rdi]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       7
+            Local     :       5
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __annotate_routines_init(__annotate_routines *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__annotate_routines_init(__annotate_routines *)) [30/71=42.3%] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(304,59)
+  -> EXTERN: (325,24) getenv(const char *)
+  -> EXTERN: (330,26) dlopen(const char *, int)
+  -> EXTERN: (342,73) dlsym(void *, const char *)
+  -> EXTERN: (343,77) dlsym(void *, const char *)
+  -> INDIRECT-: (345,51)  is_collection_disabled.65993_V$21a.0.19
+     [[ Unable to inline indirect callsite  <1>]]
+  -> INDIRECT-: (348,21)  disable_push.65993_V$219.0.19
+     [[ Unable to inline indirect callsite  <1>]]
+  -> EXTERN: (352,74) dlsym(void *, const char *)
+  -> EXTERN: (353,74) dlsym(void *, const char *)
+  -> EXTERN: (354,74) dlsym(void *, const char *)
+  -> EXTERN: (355,74) dlsym(void *, const char *)
+  -> EXTERN: (356,74) dlsym(void *, const char *)
+  -> EXTERN: (357,74) dlsym(void *, const char *)
+  -> EXTERN: (358,74) dlsym(void *, const char *)
+  -> EXTERN: (359,74) dlsym(void *, const char *)
+  -> EXTERN: (360,74) dlsym(void *, const char *)
+  -> EXTERN: (361,74) dlsym(void *, const char *)
+  -> EXTERN: (362,74) dlsym(void *, const char *)
+  -> EXTERN: (363,74) dlsym(void *, const char *)
+  -> EXTERN: (364,74) dlsym(void *, const char *)
+  -> EXTERN: (366,74) dlsym(void *, const char *)
+  -> EXTERN: (367,74) dlsym(void *, const char *)
+  -> INDIRECT-: (392,13)  itt_65987_V$212.0.19->disable_pop_V$20e
+     [[ Unable to inline indirect callsite  <1>]]
+
+
+    Report from: Code generation optimizations [cg]
+
+/opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h(304,59):remark #34051: REGISTER ALLOCATION : [__annotate_routines_init] /opt/intel/advisor_2017.1.1.486553/include/advisor-annotate.h:304
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    9[ rax rdx rbx rbp rsi rdi r13-r15]
+        
+    Routine temporaries
+        Total         :     110
+            Global    :      49
+            Local     :      61
+        Regenerable   :      39
+        Spilled       :       5
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: cv::MatExpr::~MatExpr(cv::MatExpr *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (cv::MatExpr::~MatExpr(cv::MatExpr *)) [31/71=43.7%] /usr/local/include/opencv2/core/mat.hpp(3372,18)
+  -> (3372,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (3372,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (3372,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+
+
+    Report from: Code generation optimizations [cg]
+
+/usr/local/include/opencv2/core/mat.hpp(3372,18):remark #34051: REGISTER ALLOCATION : [_ZN2cv7MatExprD1Ev] /usr/local/include/opencv2/core/mat.hpp:3372
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ rdi r12]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       7
+            Local     :       7
+        Regenerable   :       0
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: HessianDetector::detectOctaveKeypoints(HessianDetector *, const cv::Mat &, float, cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (HessianDetector::detectOctaveKeypoints(HessianDetector *, const cv::Mat &, float, cv::Mat &)) [32/71=45.1%] pyramid.cpp(230,1)
+  -> INLINE (MANUAL): (231,14) cv::MatExpr::~MatExpr(cv::MatExpr *) (isz = 14) (sz = 19)
+    -> /usr/local/include/opencv2/core/mat.hpp:(3372,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+       [[ Unable to inline callsite  <3>]]
+    -> /usr/local/include/opencv2/core/mat.hpp:(3372,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+       [[ Unable to inline callsite  <3>]]
+    -> /usr/local/include/opencv2/core/mat.hpp:(3372,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+       [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (231,14) cv::Mat::operator=(cv::Mat *, const cv::MatExpr &) (isz = 9) (sz = 18)
+    -> INDIRECT- (VIRTUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(3106,22)  EXPR_CONV.SI64.P64(*((SI64*) ((e_27869_V$289.0.42.164->op_V$28b)->__vptr_V$28a + EXPR_CONV.SI32.I64(3(SI32)) * 8(I64))))
+       [[ Unable to inline indirect callsite  <1>]]
+  -> (231,16) cv::MatExpr::~MatExpr(cv::MatExpr *) (isz = 14) (sz = 19)
+     [[ Callee not marked with inlining pragma  <4>]]
+  -> EXTERN: (231,16) cv::Mat::zeros(cv::MatExpr *, int, int, int)
+  -> INLINE (MANUAL): (232,22) std::pow(float, float) (isz = 1) (sz = 10)
+    -> EXTERN: /usr/include/c++/5/cmath:(408,12) __builtin_powf(float, float)
+  -> (234,15) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (234,15) cv::Mat::Mat(cv::Mat *, const cv::Mat &) (isz = 103) (sz = 110)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(407,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(410,21) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(413,9) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,25) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,34) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,46) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(421,9) cv::Mat::copySize(cv::Mat *, const cv::Mat &)
+  -> (235,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (235,8) cv::Mat::operator=(cv::Mat *, cv::Mat &&) (isz = 170) (sz = 180)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1209,5) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(1215,9) cv::fastFree(void *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+  -> (235,10) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE: (235,10) HessianDetector::hessianResponse(cv::Mat *, HessianDetector *, const cv::Mat &, float) (isz = 192) (sz = 203)
+    -> INLINE (MANUAL): (73,32) cv::Mat::Mat(cv::Mat *, int, int, int) (isz = 69) (sz = 80)
+      -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(339,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+      -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(341,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(343,5) cv::Mat::create(cv::Mat *, int, int, int) (isz = 28) (sz = 40)
+        -> INLINE (MANUAL): (681,56) cv::Mat::type(const cv::Mat *) const (isz = 1) (sz = 7)
+        -> EXTERN: (684,5) cv::Mat::create(cv::Mat *, int, const int *, int)
+    -> INLINE (MANUAL): (76,33) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+    -> INLINE (MANUAL): (77,34) cv::Mat::ptr<float>(cv::Mat *, int) (isz = 3) (sz = 11)
+  -> INLINE (MANUAL): (238,8) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+  -> (238,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (239,8) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+  -> (239,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (242,4) __annotate_routines() (isz = 1) (sz = 5)
+  -> (242,4) __annotate_routines_init(__annotate_routines *) (isz = 249) (sz = 257)
+     [[ Inlining inhibited by overrideable criterion  <5>]]
+  -> INDIRECT-: (242,4)  t5->site_beginA_V$200
+     [[ Unable to inline indirect callsite  <1>]]
+  -> (245,13) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <6>]]
+  -> (245,26) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) (isz = 2) (sz = 11)
+     [[ Called routine is noinline  <6>]]
+  -> (245,36) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <6>]]
+  -> (246,13) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <6>]]
+  -> (246,24) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) (isz = 2) (sz = 11)
+     [[ Called routine is noinline  <6>]]
+  -> INLINE (MANUAL): (246,36) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
+  -> (246,39) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <6>]]
+  -> INLINE (MANUAL): (247,4) __annotate_routines() (isz = 1) (sz = 5)
+  -> (247,4) __annotate_routines_init(__annotate_routines *) (isz = 249) (sz = 257)
+     [[ Inlining inhibited by overrideable criterion  <5>]]
+  -> INDIRECT-: (247,4)  t19->iteration_taskA_V$204
+     [[ Unable to inline indirect callsite  <1>]]
+  -> INLINE (MANUAL): (249,32) std::sqrt(float) (isz = 0) (sz = 7)
+  -> (251,11) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> EXTERN: (251,22) gaussianBlur(cv::Mat *, const cv::Mat *, float)
+  -> (251,22) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (251,35) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (251,35) cv::Mat::Mat(cv::Mat *, const cv::Mat &) (isz = 103) (sz = 110)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(407,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(410,21) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(413,9) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,25) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,34) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(416,46) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(421,9) cv::Mat::copySize(cv::Mat *, const cv::Mat &)
+  -> (255,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE: (255,18) HessianDetector::hessianResponse(cv::Mat *, HessianDetector *, const cv::Mat &, float) (isz = 192) (sz = 203)
+    -> INLINE (MANUAL): (73,32) cv::Mat::Mat(cv::Mat *, int, int, int) (isz = 69) (sz = 80)
+      -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(339,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+      -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(341,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(343,5) cv::Mat::create(cv::Mat *, int, int, int) (isz = 28) (sz = 40)
+        -> INLINE (MANUAL): (681,56) cv::Mat::type(const cv::Mat *) const (isz = 1) (sz = 7)
+        -> EXTERN: (684,5) cv::Mat::create(cv::Mat *, int, const int *, int)
+    -> INLINE (MANUAL): (76,33) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+    -> INLINE (MANUAL): (77,34) cv::Mat::ptr<float>(cv::Mat *, int) (isz = 3) (sz = 11)
+  -> (261,10) HessianDetector::findLevelKeypoints(HessianDetector *, float, float, const cv::Mat &, const cv::Mat &, const cv::Mat &, const cv::Mat &) (isz = 387) (sz = 404)
+     [[ Inlining would exceed -inline-max-size value (404>253) <2>]]
+  -> (266,31) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (266,31) cv::Mat::operator=(cv::Mat *, cv::Mat &&) (isz = 170) (sz = 180)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1209,5) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(1215,9) cv::fastFree(void *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+  -> (266,33) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> EXTERN: (266,33) halfImage(cv::Mat *, const cv::Mat &)
+  -> INLINE (MANUAL): (267,16) cv::Mat::operator=(cv::Mat *, const cv::Mat &) (isz = 136) (sz = 145)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(601,13) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(602,9) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(613,13) cv::Mat::copySize(cv::Mat *, const cv::Mat &)
+  -> INLINE (MANUAL): (267,29) cv::Mat::operator=(cv::Mat *, const cv::Mat &) (isz = 136) (sz = 145)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(601,13) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(602,9) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(613,13) cv::Mat::copySize(cv::Mat *, const cv::Mat &)
+  -> INLINE (MANUAL): (269,11) cv::Mat::operator=(cv::Mat *, const cv::Mat &) (isz = 136) (sz = 145)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(601,13) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(602,9) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(613,13) cv::Mat::copySize(cv::Mat *, const cv::Mat &)
+  -> INLINE (MANUAL): (269,22) cv::Mat::operator=(cv::Mat *, const cv::Mat &) (isz = 136) (sz = 145)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(601,13) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(602,9) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(613,13) cv::Mat::copySize(cv::Mat *, const cv::Mat &)
+  -> (271,4) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (271,4) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (272,4) __annotate_routines() (isz = 1) (sz = 5)
+  -> (272,4) __annotate_routines_init(__annotate_routines *) (isz = 249) (sz = 257)
+     [[ Inlining inhibited by overrideable criterion  <5>]]
+  -> INDIRECT-: (272,4)  t28->site_end_2_V$201
+     [[ Unable to inline indirect callsite  <1>]]
+  -> (272,23) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (272,23) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (272,23) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at pyramid.cpp(82,4) inlined into pyramid.cpp(235,10)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed ANTI dependence between *(in+cols*4) (86:7) and *out (104:11)
+   remark #17106: parallel dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (86:7)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed ANTI dependence between *(in+cols*4) (86:7) and *out (104:11)
+   remark #15346: vector dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (86:7)
+
+   LOOP BEGIN at pyramid.cpp(91,7) inlined into pyramid.cpp(235,10)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #17106: parallel dependence: assumed ANTI dependence between *(in+cols*4) (94:28) and *out (104:11)
+      remark #17106: parallel dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (94:28)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed ANTI dependence between *(in+cols*4) (94:28) and *out (104:11)
+      remark #15346: vector dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (94:28)
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(235,8)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(82,4) inlined into pyramid.cpp(255,18)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed ANTI dependence between *(in+cols*4) (86:7) and *out (104:11)
+   remark #17106: parallel dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (86:7)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed ANTI dependence between *(in+cols*4) (86:7) and *out (104:11)
+   remark #15346: vector dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (86:7)
+
+   LOOP BEGIN at pyramid.cpp(91,7) inlined into pyramid.cpp(255,18)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #17106: parallel dependence: assumed ANTI dependence between *(in+cols*4) (94:28) and *out (104:11)
+      remark #17106: parallel dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (94:28)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed ANTI dependence between *(in+cols*4) (94:28) and *out (104:11)
+      remark #15346: vector dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (94:28)
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(266,31)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(267,16)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 8  
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(267,29)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 8  
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(269,11)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 8  
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(269,22)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at pyramid.cpp(243,4)
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ pyramid.cpp(245,13) ]
+   remark #17102: loop was not parallelized: not a parallelization candidate
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(230,1):remark #34051: REGISTER ALLOCATION : [_ZN15HessianDetector21detectOctaveKeypointsERKN2cv3MatEfRS1_] pyramid.cpp:230
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   31[ rax rdx rcx rbx rbp rsi rdi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :     546
+            Global    :     147
+            Local     :     399
+        Regenerable   :     134
+        Spilled       :      17
+        
+    Routine stack
+        Variables     :    1144 bytes*
+            Reads     :     135 [3.21e+02 ~ 4.2%]
+            Writes    :     179 [4.13e+02 ~ 5.4%]
+        Spills        :      88 bytes*
+            Reads     :      23 [6.22e+01 ~ 0.8%]
+            Writes    :      14 [3.14e+01 ~ 0.4%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: HessianDetector::detectPyramidKeypoints(HessianDetector *, const cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (HessianDetector::detectPyramidKeypoints(HessianDetector *, const cv::Mat &)) [33/71=46.5%] pyramid.cpp(276,1)
+  -> (279,10) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (279,10) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (283,18) cv::Mat::operator=(cv::Mat *, cv::Mat &&) (isz = 170) (sz = 180)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1209,5) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(1215,9) cv::fastFree(void *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+  -> (283,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (283,20) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> EXTERN: (283,20) doubleImage(cv::Mat *, const cv::Mat &)
+  -> (287,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (287,18) cv::Mat::operator=(cv::Mat *, cv::Mat &&) (isz = 170) (sz = 180)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1209,5) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(1215,9) cv::fastFree(void *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1221,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,13) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(1222,25) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+  -> (287,26) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> INLINE (MANUAL): (287,26) cv::Mat::clone(cv::Mat *, const cv::Mat *) const (isz = 67) (sz = 74)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(663,9) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
+      -> INLINE (MANUAL): (333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+      -> INLINE (MANUAL): (335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+    -> /usr/local/include/opencv2/core/mat.inl.hpp:(663,9) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+       [[ Unable to inline callsite  <3>]]
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(664,5) cv::_OutputArray::_OutputArray(cv::_OutputArray *, cv::Mat &) (isz = 13) (sz = 20)
+      -> INLINE (MANUAL): (143,22) cv::_InputArray::_InputArray(cv::_InputArray *const) (isz = 9) (sz = 14)
+        -> INLINE (MANUAL): (69,21) cv::_InputArray::_InputArray(cv::_InputArray *) (isz = 9) (sz = 14)
+          -> INLINE (MANUAL): (69,21) cv::Size_<int>::Size_(cv::Size_<int> *) (isz = 2) (sz = 7)
+          -> INLINE (MANUAL): (69,37) cv::_InputArray::init(cv::_InputArray *, int, const void *) (isz = 1) (sz = 9)
+      -> INLINE (MANUAL): (143,45) cv::_InputArray::init(cv::_InputArray *, int, const void *) (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(664,5) cv::Mat::copyTo(const cv::Mat *, cv::OutputArray) const
+  -> INLINE (MANUAL): (292,21) std::sqrt(float) (isz = 0) (sz = 7)
+  -> EXTERN: (293,7) gaussianBlurInplace(cv::Mat &, float)
+  -> (298,4) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (300,14) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <6>]]
+  -> EXTERN: (300,23) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+  -> (300,40) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
+     [[ Called routine is noinline  <6>]]
+  -> EXTERN: (300,50) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
+  -> (300,67) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
+     [[ Called routine is noinline  <6>]]
+  -> INLINE (MANUAL): (301,11) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+  -> (301,11) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+  -> (302,7) HessianDetector::detectOctaveKeypoints(HessianDetector *, const cv::Mat &, float, cv::Mat &) (isz = 1913) (sz = 1924)
+     [[ Inlining would exceed -inline-max-size value (1924>253) <2>]]
+  -> INLINE (MANUAL): (305,18) cv::Mat::operator=(cv::Mat *, const cv::Mat &) (isz = 136) (sz = 145)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(601,13) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(602,9) cv::Mat::release(cv::Mat *) (isz = 47) (sz = 52)
+      -> EXTERN: (703,14) __atomic_fetch_add_4(volatile void *, unsigned int, int)
+      -> EXTERN: (704,9) cv::Mat::deallocate(cv::Mat *)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(609,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,17) cv::MatStep::operator[](cv::MatStep *, int) (isz = 1) (sz = 9)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(610,29) cv::MatStep::operator[](const cv::MatStep *, int) const (isz = 1) (sz = 9)
+    -> EXTERN: /usr/local/include/opencv2/core/mat.inl.hpp:(613,13) cv::Mat::copySize(cv::Mat *, const cv::Mat &)
+  -> (306,4) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+     [[ Unable to inline callsite  <3>]]
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(283,18)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 8  
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(287,18)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 8  
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(298,4)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(707,5) inlined into pyramid.cpp(305,18)
+      remark #17102: loop was not parallelized: not a parallelization candidate
+      remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
+      remark #25478: While Loop Unrolled by 8  
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(276,1):remark #34051: REGISTER ALLOCATION : [_ZN15HessianDetector22detectPyramidKeypointsERKN2cv3MatE] pyramid.cpp:276
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   17[ rax rdx rcx rbx rbp rsi rdi r8-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :     214
+            Global    :      56
+            Local     :     158
+        Regenerable   :      55
+        Spilled       :       8
+        
+    Routine stack
+        Variables     :     416 bytes*
+            Reads     :      83 [5.06e+01 ~ 15.2%]
+            Writes    :     121 [8.89e+01 ~ 26.8%]
+        Spills        :      16 bytes*
+            Reads     :       5 [6.66e+00 ~ 2.0%]
+            Writes    :       5 [5.98e+00 ~ 1.8%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: HessianDetector::hessianResponse(cv::Mat *, HessianDetector *, const cv::Mat &, float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (HessianDetector::hessianResponse(cv::Mat *, HessianDetector *, const cv::Mat &, float)) [34/71=47.9%] pyramid.cpp(67,1)
+  -> INLINE (MANUAL): (73,32) cv::Mat::Mat(cv::Mat *, int, int, int) (isz = 69) (sz = 80)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(339,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(341,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(343,5) cv::Mat::create(cv::Mat *, int, int, int) (isz = 28) (sz = 40)
+      -> INLINE (MANUAL): (681,56) cv::Mat::type(const cv::Mat *) const (isz = 1) (sz = 7)
+      -> EXTERN: (684,5) cv::Mat::create(cv::Mat *, int, const int *, int)
+  -> INLINE (MANUAL): (76,33) cv::Mat::ptr<float>(const cv::Mat *, int) const (isz = 3) (sz = 11)
+  -> INLINE (MANUAL): (77,34) cv::Mat::ptr<float>(cv::Mat *, int) (isz = 3) (sz = 11)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(339,6) inlined into pyramid.cpp(73,32)
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15389: vectorization support: reference __p1[_2] has unaligned access
+   remark #15388: vectorization support: reference at (339:6) has aligned access
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 4
+   remark #15427: loop was completely unrolled
+   remark #15309: vectorization support: normalized vectorization overhead 0.500
+   remark #15301: MATERIALIZED LOOP WAS VECTORIZED
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 4 
+   remark #15477: vector cost: 1.500 
+   remark #15478: estimated potential speedup: 1.770 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(339,6) inlined into pyramid.cpp(73,32)
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15389: vectorization support: reference *(__p1+_2*8+16) has unaligned access
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 4
+   remark #15309: vectorization support: normalized vectorization overhead 0.600
+   remark #15301: MATERIALIZED LOOP WAS VECTORIZED
+   remark #15451: unmasked unaligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 3 
+   remark #15477: vector cost: 1.250 
+   remark #15478: estimated potential speedup: 1.280 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=1
+LOOP END
+
+LOOP BEGIN at /usr/local/include/opencv2/core/mat.inl.hpp(339,6) inlined into pyramid.cpp(73,32)
+<Remainder loop for vectorization>
+   remark #25436: completely unrolled by 2  
+LOOP END
+
+LOOP BEGIN at pyramid.cpp(82,4)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #17106: parallel dependence: assumed ANTI dependence between *(in+cols*4) (86:7) and *out (104:11)
+   remark #17106: parallel dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (86:7)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed ANTI dependence between *(in+cols*4) (86:7) and *out (104:11)
+   remark #15346: vector dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (86:7)
+
+   LOOP BEGIN at pyramid.cpp(91,7)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #17106: parallel dependence: assumed ANTI dependence between *(in+cols*4) (94:28) and *out (104:11)
+      remark #17106: parallel dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (94:28)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed ANTI dependence between *(in+cols*4) (94:28) and *out (104:11)
+      remark #15346: vector dependence: assumed FLOW dependence between *out (104:11) and *(in+cols*4) (94:28)
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+pyramid.cpp(67,1):remark #34051: REGISTER ALLOCATION : [_ZN15HessianDetector15hessianResponseERKN2cv3MatEf] pyramid.cpp:67
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   30[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :      81
+            Global    :      32
+            Local     :      49
+        Regenerable   :      10
+        Spilled       :       6
+        
+    Routine stack
+        Variables     :       8 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       2 [9.85e-01 ~ 0.1%]
+        Spills        :       8 bytes*
+            Reads     :       1 [4.93e-01 ~ 0.0%]
+            Writes    :       1 [4.93e-01 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::ctype<char>::widen(const std::ctype<char> *, char) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::ctype<char>::widen(const std::ctype<char> *, char) const) /usr/include/c++/5/bits/locale_facets.h(873,7)
+
+===========================================================================
+
+Begin optimization report for: std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type)) /usr/include/c++/5/bits/stl_vector.h(780,7)
+
+===========================================================================
+
+Begin optimization report for: cv::Size_<int>::Size_(cv::Size_<int> *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Size_<int>::Size_(cv::Size_<int> *)) /usr/local/include/opencv2/core/types.hpp(1565,27)
+
+===========================================================================
+
+Begin optimization report for: cv::_InputArray::_InputArray(cv::_InputArray *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::_InputArray::_InputArray(cv::_InputArray *)) /usr/local/include/opencv2/core/mat.inl.hpp(69,35)
+
+===========================================================================
+
+Begin optimization report for: cv::_InputArray::_InputArray(cv::_InputArray *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::_InputArray::_InputArray(cv::_InputArray *const)) /usr/local/include/opencv2/core/mat.inl.hpp(69,21)
+
+===========================================================================
+
+Begin optimization report for: cv::_InputArray::init(cv::_InputArray *, int, const void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::_InputArray::init(cv::_InputArray *, int, const void *)) /usr/local/include/opencv2/core/mat.inl.hpp(60,1)
+
+===========================================================================
+
+Begin optimization report for: cv::_OutputArray::_OutputArray(cv::_OutputArray *, cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::_OutputArray::_OutputArray(cv::_OutputArray *, cv::Mat &)) /usr/local/include/opencv2/core/mat.inl.hpp(143,43)
+
+===========================================================================
+
+Begin optimization report for: cv::MatSize::MatSize(cv::MatSize *, int *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::MatSize::MatSize(cv::MatSize *, int *)) /usr/local/include/opencv2/core/mat.inl.hpp(1246,13)
+
+===========================================================================
+
+Begin optimization report for: cv::MatStep::MatStep(cv::MatStep *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::MatStep::MatStep(cv::MatStep *)) /usr/local/include/opencv2/core/mat.inl.hpp(1301,1)
+
+===========================================================================
+
+Begin optimization report for: cv::MatStep::operator[](const cv::MatStep *, int) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::MatStep::operator[](const cv::MatStep *, int) const) /usr/local/include/opencv2/core/mat.inl.hpp(1313,1)
+
+===========================================================================
+
+Begin optimization report for: cv::MatStep::operator[](cv::MatStep *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::MatStep::operator[](cv::MatStep *, int)) /usr/local/include/opencv2/core/mat.inl.hpp(1319,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::Mat(cv::Mat *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::Mat(cv::Mat *)) /usr/local/include/opencv2/core/mat.inl.hpp(336,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::Mat(cv::Mat *, int, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::Mat(cv::Mat *, int, int, int)) /usr/local/include/opencv2/core/mat.inl.hpp(342,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::Mat(cv::Mat *, const cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::Mat(cv::Mat *, const cv::Mat &)) /usr/local/include/opencv2/core/mat.inl.hpp(411,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::operator=(cv::Mat *, const cv::Mat &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::operator=(cv::Mat *, const cv::Mat &)) /usr/local/include/opencv2/core/mat.inl.hpp(597,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::operator=(cv::Mat *, const cv::MatExpr &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::operator=(cv::Mat *, const cv::MatExpr &)) /usr/local/include/opencv2/core/mat.inl.hpp(3105,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::clone(cv::Mat *, const cv::Mat *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::clone(cv::Mat *, const cv::Mat *) const) /usr/local/include/opencv2/core/mat.inl.hpp(662,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::create(cv::Mat *, int, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::create(cv::Mat *, int, int, int)) /usr/local/include/opencv2/core/mat.inl.hpp(679,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::release(cv::Mat *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::release(cv::Mat *)) /usr/local/include/opencv2/core/mat.inl.hpp(702,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::type(const cv::Mat *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::type(const cv::Mat *) const) /usr/local/include/opencv2/core/mat.inl.hpp(771,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::operator=(cv::Mat *, cv::Mat &&)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::operator=(cv::Mat *, cv::Mat &&)) /usr/local/include/opencv2/core/mat.inl.hpp(1205,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::ptr<float>(const cv::Mat *, int) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::ptr<float>(const cv::Mat *, int) const) /usr/local/include/opencv2/core/mat.inl.hpp(833,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::ptr<float>(cv::Mat *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::ptr<float>(cv::Mat *, int)) /usr/local/include/opencv2/core/mat.inl.hpp(826,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::at<float>(cv::Mat *, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::at<float>(cv::Mat *, int, int)) /usr/local/include/opencv2/core/mat.inl.hpp(952,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::at<float>(const cv::Mat *, int, int) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::at<float>(const cv::Mat *, int, int) const) /usr/local/include/opencv2/core/mat.inl.hpp(963,1)
+
+===========================================================================
+
+Begin optimization report for: cv::Mat::at<unsigned char>(cv::Mat *, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (cv::Mat::at<unsigned char>(cv::Mat *, int, int)) /usr/local/include/opencv2/core/mat.inl.hpp(952,1)
+
+===========================================================================
+
+Begin optimization report for: std::fabs(float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::fabs(float)) /usr/include/c++/5/cmath(261,3)
+
+===========================================================================
+
+Begin optimization report for: std::pow(float, float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::pow(float, float)) /usr/include/c++/5/cmath(408,3)
+
+===========================================================================
+
+Begin optimization report for: std::sqrt(float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::sqrt(float)) /usr/include/c++/5/cmath(483,3)
+
+===========================================================================
+
+Begin optimization report for: std::isnan(float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::isnan(float)) /usr/include/c++/5/cmath(627,3)
+
+===========================================================================
+
+Begin optimization report for: std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::operator|(std::_Ios_Iostate, std::_Ios_Iostate)) /usr/include/c++/5/bits/ios_base.h(170,3)
+
+===========================================================================
+
+Begin optimization report for: std::__check_facet<std::basic_ios<char, std::char_traits<char>>::__ctype_type>(const std::basic_ios<char, std::char_traits<char>>::__ctype_type *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (std::__check_facet<std::basic_ios<char, std::char_traits<char>>::__ctype_type>(const std::basic_ios<char, std::char_traits<char>>::__ctype_type *)) /usr/include/c++/5/bits/basic_ios.h(48,5)
+
+===========================================================================
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [71/71=100.0%] <compiler generated>
+  -> EXTERN: /usr/include/c++/5/iostream:(74,25) __cxa_atexit()
+  -> EXTERN: /usr/include/c++/5/iostream:(74,25) std::ios_base::Init::Init(std::ios_base::Init *)
+
+
+    Report from: Code generation optimizations [cg]
+
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [__sti__$E] (null):0
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      13
+            Global    :       7
+            Local     :       6
+        Regenerable   :       7
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> The indirectly called function must be resolved to its targets before it 
+can be inlined.  Consider compiling with -ipo or -prof-gen followed by 
+-prof-use.
+
+<2> The function is larger than the inliner would normally inline.  Use the
+    option -inline-max-size to increase the size of any function that would
+    normally be inlined, add "inline __attribute__((always_inline))" to the
+    declaration of the called function, or add "#pragma forceinline" before
+    the call site.
+
+<3> Inlining the function will lead to incorrect program behavior.
+
+<4> The compiler's heuristics indicate that the function is not profitable to 
+    inline.  Override this decision by adding "inline 
+    __attribute__((always_inline))" to the declaration of the called function, 
+    or add "#pragma forceinline" before the call site.
+
+<5> The compiler's heuristics predict that it is not profitable to inline the
+    call.  Add "inline __attribute__((always_inline))" to the declaration of
+    the called function or add "#pragma forceinline" before the call site.
+
+<6> The routine declaration is annotated with "__attribute__((noinline))".  
+    Remove this annotation to permit the compiler to inline this routine.
+

@@ -13,15 +13,18 @@
 #include "pyramid.h"
 #include "helpers.h"
 
+#include "advisor-annotate.h"  // Add to each module that contains Intel Advisor annotations
+
 #include <iostream>
 using namespace std;
+
 /* find blob point type from Hessian matrix H, 
    we know that:
    - if H is positive definite it is a DARK blob,
    - if H is negative definite it is a BRIGHT blob
    - det H is negative it is a SADDLE point
 */
-int getHessianPointType(float *ptr, float value)
+int getHessianPointType(const float *ptr, float value)
 {
    if (value < 0)
       return HessianDetector::HESSIAN_SADDLE;
@@ -119,14 +122,15 @@ Mat HessianDetector::hessianResponse(const Mat &inputImage, float norm)
 // we don't care about border effects
 #define POINT_SAFETY_BORDER  3
 
-void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixelDistance)
+void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixelDistance,
+		const Mat &high, const Mat &prevBlur, const Mat &blur, const Mat &low)
 {
    const int cols = cur.cols;
    const int rows = cur.rows;
 
    float b[3] = {};
    float val = 0;
-   bool converged = false;
+   //bool converged = false;
    int nr = r, nc = c;
    
    for (int iter=0; iter<5; iter++)
@@ -180,7 +184,7 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
       {
          // converged, displacement is sufficiently small, terminate here
          // TODO: decide if we want only converged local extrema...
-         converged = true;
+         //converged = true;
          break;
       }
    }
@@ -203,7 +207,8 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
       hessianKeypointCallback->onHessianKeypointDetected(prevBlur, pixelDistance*(c + b[0]), pixelDistance*(r + b[1]), pixelDistance*scale, pixelDistance, type, val);
 }
 
-void HessianDetector::findLevelKeypoints(float curScale, float pixelDistance)
+void HessianDetector::findLevelKeypoints(float curScale, float pixelDistance,
+		const cv::Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low)
 {
    assert(par.border >= 2);
    const int rows = cur.rows;
@@ -216,7 +221,7 @@ void HessianDetector::findLevelKeypoints(float curScale, float pixelDistance)
          if ( (val > positiveThreshold && (isMax(val, cur, r, c) && isMax(val, low, r, c) && isMax(val, high, r, c))) ||
               (val < negativeThreshold && (isMin(val, cur, r, c) && isMin(val, low, r, c) && isMin(val, high, r, c))) )
             // either positive -> local max. or negative -> local min.
-            localizeKeypoint(r, c, curScale, pixelDistance);
+            localizeKeypoint(r, c, curScale, pixelDistance, high, prevBlur, blur, low);
       }
    }
 }
@@ -226,12 +231,20 @@ void HessianDetector::detectOctaveKeypoints(const Mat &firstLevel, float pixelDi
    octaveMap = Mat::zeros(firstLevel.rows, firstLevel.cols, CV_8UC1);
    float sigmaStep = pow(2.0f, 1.0f / (float) par.numberOfScales);
    float curSigma = par.initialSigma;
-   blur = firstLevel;   
+   Mat blur = firstLevel;
    cur = hessianResponse(blur, curSigma*curSigma);
    int numLevels = 1;
    
+   Mat prevBlur;
+   Mat low;
+
+   //toDo: octaveMap is shared, need synchronization
+   ANNOTATE_SITE_BEGIN( scales );  // Place before the loop control statement (and before any loop directives) to begin a parallel code region (parallel site).
    for (int i = 1; i < par.numberOfScales+2; i++)
    {
+	  std::cout<<"curSigma="<<curSigma<<std::endl;
+	  std::cout<<"sigmas="<<par.sigmas[i]<<std::endl;
+	  ANNOTATE_ITERATION_TASK( MyTask1 );  // Place at the start of loop body. This annotation identifies an entire body as a task.
       // compute the increase necessary for the next level and compute the next level
       float sigma = curSigma * sqrt(sigmaStep * sigmaStep - 1.0f);
       // do the blurring
@@ -239,13 +252,13 @@ void HessianDetector::detectOctaveKeypoints(const Mat &firstLevel, float pixelDi
       // the next level sigma
       sigma = curSigma*sigmaStep;
       // compute response for current level
-      high = hessianResponse(nextBlur, sigma*sigma);
+      Mat high = hessianResponse(nextBlur, sigma*sigma);
       numLevels ++;
       // if we have three consecutive responses
       if (numLevels == 3)
       {
          // find keypoints in this part of octave for curLevel
-         findLevelKeypoints(curSigma, pixelDistance);
+         findLevelKeypoints(curSigma, pixelDistance, high, prevBlur, blur, low);
          numLevels--;
       }      
       if (i == par.numberOfScales)
@@ -256,6 +269,7 @@ void HessianDetector::detectOctaveKeypoints(const Mat &firstLevel, float pixelDi
       low = cur; cur = high;
       curSigma *= sigmaStep;
    }
+   ANNOTATE_SITE_END();  // End the parallel code region, after task execution completes
 }
    
 void HessianDetector::detectPyramidKeypoints(const Mat &image)
@@ -283,6 +297,7 @@ void HessianDetector::detectPyramidKeypoints(const Mat &image)
    int minSize = 2 * par.border + 2;
    while (firstLevel.rows > minSize && firstLevel.cols > minSize)
    {
+	   std::cout<<"rows="<<firstLevel.rows<<" cols="<<firstLevel.cols<<std::endl;
       Mat nextOctaveFirstLevel; 
       detectOctaveKeypoints(firstLevel, pixelDistance, nextOctaveFirstLevel);      
       pixelDistance *= 2.0;

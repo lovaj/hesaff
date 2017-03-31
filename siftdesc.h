@@ -13,7 +13,7 @@
 #define __SIFTDESC_H__
 
 #include <vector>
-#include <cv.h>
+#include <opencv2/opencv.hpp>
 #include "helpers.h"
 
 struct SIFTDescriptorParams
