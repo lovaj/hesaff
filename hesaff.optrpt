@@ -64,16 +64,16 @@ INLINE REPORT: (main(int, char **)) [1/333=0.3%] hesaff.cpp(142,1)
     -> INLINE (MANUAL): (34,29) std::sqrt(float) (isz = 0) (sz = 7)
   -> (162,24) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
      [[ Callee not marked with inlining pragma  <2>]]
-  -> (162,24) PyramidParams::PyramidParams(PyramidParams *) (isz = 1394) (sz = 1399)
-     [[ Inlining would exceed -inline-max-total-size value (2477>2000) <3>]]
+  -> (162,24) PyramidParams::PyramidParams(PyramidParams *) (isz = 1291) (sz = 1296)
+     [[ Inlining would exceed -inline-max-total-size value (2260>2000) <3>]]
   -> INLINE (MANUAL): (165,28) AffineShapeParams::AffineShapeParams(AffineShapeParams *) (isz = 14) (sz = 19)
     -> INLINE (MANUAL): affine.h:(44,24) std::sqrt(float) (isz = 0) (sz = 7)
   -> INLINE (MANUAL): (170,31) SIFTDescriptorParams::SIFTDescriptorParams(SIFTDescriptorParams *) (isz = 6) (sz = 11)
-  -> (172,48) AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *) (isz = 359) (sz = 364)
+  -> (172,48) AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *) (isz = 349) (sz = 354)
      [[ Callee not marked with inlining pragma  <2>]]
-  -> INLINE (MANUAL): (172,48) AffineHessianDetector::AffineHessianDetector(AffineHessianDetector *, const PyramidParams &, const AffineShapeParams &, const SIFTDescriptorParams &) (isz = 1667) (sz = 1678)
+  -> INLINE (MANUAL): (172,48) AffineHessianDetector::AffineHessianDetector(AffineHessianDetector *, const PyramidParams &, const AffineShapeParams &, const SIFTDescriptorParams &) (isz = 1563) (sz = 1574)
     -> INLINE (MANUAL): (59,4) HessianKeypointCallback::HessianKeypointCallback(HessianKeypointCallback *const) (isz = 2) (sz = 7)
-      -> INLINE (MANUAL): pyramid.h:(57,7) HessianKeypointCallback::HessianKeypointCallback(HessianKeypointCallback *) (isz = 2) (sz = 7)
+      -> INLINE (MANUAL): pyramid.h:(52,7) HessianKeypointCallback::HessianKeypointCallback(HessianKeypointCallback *) (isz = 2) (sz = 7)
     -> INLINE (MANUAL): (59,4) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
       -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
       -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
@@ -90,27 +90,17 @@ INLINE REPORT: (main(int, char **)) [1/333=0.3%] hesaff.cpp(142,1)
        [[ Called routine is noinline  <4>]]
     -> INLINE (MANUAL): (59,4) AffineShapeCallback::AffineShapeCallback(AffineShapeCallback *const) (isz = 2) (sz = 7)
       -> INLINE (MANUAL): affine.h:(48,8) AffineShapeCallback::AffineShapeCallback(AffineShapeCallback *) (isz = 2) (sz = 7)
-    -> INLINE (MANUAL): (60,23) HessianDetector::HessianDetector(HessianDetector *const, const PyramidParams &) (isz = 207) (sz = 214)
-      -> INLINE (MANUAL): pyramid.h:(74,4) HessianDetector::HessianDetector(HessianDetector *, const PyramidParams &) (isz = 207) (sz = 214)
-        -> INLINE (MANUAL): (74,4) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
+    -> INLINE (MANUAL): (60,23) HessianDetector::HessianDetector(HessianDetector *const, const PyramidParams &) (isz = 103) (sz = 110)
+      -> INLINE (MANUAL): pyramid.h:(69,4) HessianDetector::HessianDetector(HessianDetector *, const PyramidParams &) (isz = 103) (sz = 110)
+        -> INLINE (MANUAL): (69,4) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
           -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
           -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
-        -> INLINE (MANUAL): (74,4) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
-          -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
-          -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
-        -> (74,4) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-           [[ Unable to inline callsite  <1>]]
-        -> (74,4) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-           [[ Unable to inline callsite  <1>]]
-        -> INLINE (MANUAL): (74,4) cv::Mat::Mat(cv::Mat *) (isz = 39) (sz = 44)
-          -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(333,6) cv::MatStep::MatStep(cv::MatStep *) (isz = 10) (sz = 15)
-          -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(335,47) cv::MatSize::MatSize(cv::MatSize *, int *) (isz = 0) (sz = 6)
-        -> INLINE (MANUAL): (80,8) PyramidParams::PyramidParams(PyramidParams *, const PyramidParams &) (isz = 22) (sz = 29)
+        -> (75,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
+           [[ Callee not marked with inlining pragma  <2>]]
+        -> INLINE (MANUAL): (75,8) PyramidParams::PyramidParams(PyramidParams *, const PyramidParams &) (isz = 22) (sz = 29)
           -> (18,8) std::vector<float, std::allocator<float>>::vector(std::vector<float, std::allocator<float>> *, const std::vector<float, std::allocator<float>> &) (isz = 160) (sz = 167)
              [[ Called routine is noinline  <4>]]
-        -> (80,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
-           [[ Callee not marked with inlining pragma  <2>]]
-    -> (60,23) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 63) (sz = 68)
+    -> (60,23) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 53) (sz = 58)
        [[ Callee not marked with inlining pragma  <2>]]
     -> INLINE (MANUAL): (61,19) AffineShape::AffineShape(AffineShape *const, const AffineShapeParams &) (isz = 556) (sz = 563)
       -> affine.h:(64,4) AffineShape::AffineShape(AffineShape *, const AffineShapeParams &) (isz = 556) (sz = 563)
@@ -247,7 +237,7 @@ INLINE REPORT: (main(int, char **)) [1/333=0.3%] hesaff.cpp(142,1)
           -> INLINE (MANUAL): /usr/include/c++/5/streambuf:(197,7) std::basic_streambuf<char, std::char_traits<char>>::~basic_streambuf(std::basic_streambuf<char, std::char_traits<char>> *) (isz = 8) (sz = 13)
             -> EXTERN: (198,9) std::locale::~locale(std::locale *)
   -> EXTERN: (184,7) _vla_free(void *, long)
-  -> INLINE (MANUAL): (184,7) AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *) (isz = 359) (sz = 364)
+  -> INLINE (MANUAL): (184,7) AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *) (isz = 349) (sz = 354)
     -> INLINE (MANUAL): (70,29) cv::Mat_<float>::~Mat_(cv::Mat_<float> *) (isz = 2) (sz = 7)
       -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.hpp:(2038,30) cv::Mat::~Mat(cv::Mat *const) (isz = 0) (sz = 5)
         -> /usr/local/include/opencv2/core/mat.inl.hpp:(588,6) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
@@ -338,9 +328,9 @@ INLINE REPORT: (main(int, char **)) [1/333=0.3%] hesaff.cpp(142,1)
            [[ Unable to inline callsite  <1>]]
         -> (80,7) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
            [[ Unable to inline callsite  <1>]]
-    -> INLINE (MANUAL): (70,29) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 63) (sz = 68)
-      -> INLINE (MANUAL): pyramid.h:(64,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 63) (sz = 68)
-        -> INLINE (MANUAL): (64,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
+    -> INLINE (MANUAL): (70,29) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 53) (sz = 58)
+      -> INLINE (MANUAL): pyramid.h:(59,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 53) (sz = 58)
+        -> INLINE (MANUAL): (59,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
           -> INLINE (MANUAL): (18,8) std::vector<float, std::allocator<float>>::~vector(std::vector<float, std::allocator<float>> *) (isz = 40) (sz = 45)
             -> EXTERN: /usr/include/c++/5/bits/stl_vector.h:(424,7) __cxa_call_unexpected
             -> /usr/include/c++/5/bits/stl_vector.h:(424,7) std::_Vector_base<float, std::allocator<float>>::~_Vector_base(std::_Vector_base<float, std::allocator<float>> *const) (isz = 18) (sz = 23)
@@ -354,11 +344,7 @@ INLINE REPORT: (main(int, char **)) [1/333=0.3%] hesaff.cpp(142,1)
                   -> INLINE (MANUAL): (178,4) std::allocator_traits<std::allocator<float>>::deallocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::pointer, std::allocator_traits<std::allocator<float>>::size_type) (isz = 0) (sz = 9)
                     -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(517,13) __gnu_cxx::new_allocator<float>::deallocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::pointer, __gnu_cxx::new_allocator<float>::size_type) (isz = 0) (sz = 7)
                       -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(110,9) operator delete(void *)
-        -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-           [[ Unable to inline callsite  <1>]]
-        -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-           [[ Unable to inline callsite  <1>]]
-        -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+        -> (59,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
            [[ Unable to inline callsite  <1>]]
   -> INLINE (MANUAL): (184,7) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
     -> INLINE (MANUAL): pyramid.h:(18,8) std::vector<float, std::allocator<float>>::~vector(std::vector<float, std::allocator<float>> *) (isz = 40) (sz = 45)
@@ -462,16 +448,16 @@ hesaff.cpp(142,1):remark #34051: REGISTER ALLOCATION : [main] hesaff.cpp:142
         Assigned     :   29[ rax rdx rcx rsi rdi r8-r15 zmm0-zmm15]
         
     Routine temporaries
-        Total         :     581
+        Total         :     572
             Global    :      92
-            Local     :     489
-        Regenerable   :     203
+            Local     :     480
+        Regenerable   :     194
         Spilled       :       5
         
     Routine stack
-        Variables     :    2425 bytes*
-            Reads     :      77 [2.83e+01 ~ 5.3%]
-            Writes    :     190 [1.06e+02 ~ 19.8%]
+        Variables     :    2233 bytes*
+            Reads     :      77 [2.83e+01 ~ 5.6%]
+            Writes    :     164 [8.76e+01 ~ 17.2%]
         Spills        :       8 bytes*
             Reads     :       1 [7.20e-01 ~ 0.1%]
             Writes    :       1 [7.20e-01 ~ 0.1%]
@@ -859,7 +845,7 @@ INLINE REPORT: (AffineHessianDetector::exportKeypoints(AffineHessianDetector *, 
        [[ Unable to inline callsite  <1>]]
     -> EXTERN: /usr/local/include/opencv2/core/operations.hpp:(290,46) cv::SVD::operator()(cv::SVD *, cv::InputArray, int)
   -> INLINE (MANUAL): (130,15) cv::Mat::operator=(cv::Mat *, const cv::MatExpr &) (isz = 9) (sz = 18)
-    -> INDIRECT- (VIRTUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(3106,22)  EXPR_CONV.SI64.P64(*((SI64*) ((e_33806_V$519.0.237.953->op_V$337)->__vptr_V$51a + EXPR_CONV.SI32.I64(3(SI32)) * 8(I64))))
+    -> INDIRECT- (VIRTUAL): /usr/local/include/opencv2/core/mat.inl.hpp:(3106,22)  EXPR_CONV.SI64.P64(*((SI64*) ((e_33806_V$513.0.237.949->op_V$330)->__vptr_V$514 + EXPR_CONV.SI32.I64(3(SI32)) * 8(I64))))
        [[ Unable to inline indirect callsite  <7>]]
   -> INLINE (MANUAL): (130,15) cv::MatExpr::~MatExpr(cv::MatExpr *) (isz = 14) (sz = 19)
     -> /usr/local/include/opencv2/core/mat.hpp:(3372,18) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
@@ -2088,15 +2074,11 @@ Begin optimization report for: HessianDetector::~HessianDetector(HessianDetector
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (HessianDetector::~HessianDetector(HessianDetector *const)) [32/333=9.6%] pyramid.h(64,8)
-  -> INLINE (MANUAL): (64,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 63) (sz = 68)
-    -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+INLINE REPORT: (HessianDetector::~HessianDetector(HessianDetector *const)) [32/333=9.6%] pyramid.h(59,8)
+  -> INLINE (MANUAL): (59,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 53) (sz = 58)
+    -> (59,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
        [[ Unable to inline callsite  <1>]]
-    -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-       [[ Unable to inline callsite  <1>]]
-    -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-       [[ Unable to inline callsite  <1>]]
-    -> INLINE (MANUAL): (64,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
+    -> INLINE (MANUAL): (59,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
       -> INLINE (MANUAL): (18,8) std::vector<float, std::allocator<float>>::~vector(std::vector<float, std::allocator<float>> *) (isz = 40) (sz = 45)
         -> /usr/include/c++/5/bits/stl_vector.h:(424,7) std::_Vector_base<float, std::allocator<float>>::~_Vector_base(std::_Vector_base<float, std::allocator<float>> *const) (isz = 18) (sz = 23)
            [[ Callee not marked with inlining pragma  <2>]]
@@ -2114,18 +2096,18 @@ INLINE REPORT: (HessianDetector::~HessianDetector(HessianDetector *const)) [32/3
 
     Report from: Code generation optimizations [cg]
 
-pyramid.h(64,8):remark #34051: REGISTER ALLOCATION : [_ZN15HessianDetectorD2Ev] pyramid.h:64
+pyramid.h(59,8):remark #34051: REGISTER ALLOCATION : [_ZN15HessianDetectorD2Ev] pyramid.h:59
 
     Hardware registers
         Reserved     :    2[ rsp rip]
         Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
         Callee-save  :    6[ rbx rbp r12-r15]
-        Assigned     :    2[ rdi r15]
+        Assigned     :    2[ rbp rdi]
         
     Routine temporaries
-        Total         :      16
+        Total         :      12
             Global    :       8
-            Local     :       8
+            Local     :       4
         Regenerable   :       0
         Spilled       :       1
         
@@ -2994,38 +2976,12 @@ INLINE REPORT: (PyramidParams::PyramidParams(PyramidParams *)) [39/333=11.7%] py
       -> INLINE (MANUAL): /usr/include/c++/5/bits/vector.tcc:(101,24) std::forward<std::remove_reference<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::__base_ref>::type>(std::remove_reference<std::remove_reference<std::move_iterator<std::_Vector_base<float, std::allocator<float>>::pointer>::__base_ref>::type>::type &) (isz = 0) (sz = 6)
     -> INLINE (MANUAL): /usr/include/c++/5/bits/stl_vector.h:(932,22) std::move<std::vector<float, std::allocator<float>>::value_type &>(std::vector<float, std::allocator<float>>::value_type &) (isz = 0) (sz = 6)
   -> INLINE (MANUAL): (47,34) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
-  -> (49,19) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
-     [[ Called routine is noinline  <4>]]
-  -> EXTERN: (49,38) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, int)
-  -> (49,54) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
-     [[ Called routine is noinline  <4>]]
-  -> (50,19) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
-     [[ Called routine is noinline  <4>]]
-  -> (50,28) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, unsigned long) (isz = 1) (sz = 10)
-     [[ Called routine is noinline  <4>]]
-  -> INLINE (MANUAL): (50,37) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
-  -> (50,43) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
-     [[ Called routine is noinline  <4>]]
-  -> INLINE (MANUAL): (51,35) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
-  -> INLINE (MANUAL): (51,35) std::vector<float, std::allocator<float>>::size(const std::vector<float, std::allocator<float>> *) const (isz = 5) (sz = 12)
-  -> (52,20) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *) (isz = 15) (sz = 24)
-     [[ Called routine is noinline  <4>]]
-  -> (52,31) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, float) (isz = 2) (sz = 11)
-     [[ Called routine is noinline  <4>]]
-  -> INLINE (MANUAL): (52,39) std::vector<float, std::allocator<float>>::operator[](std::vector<float, std::allocator<float>> *, std::vector<float, std::allocator<float>>::size_type) (isz = 1) (sz = 10)
-  -> (52,42) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &)) (isz = 0) (sz = 9)
-     [[ Called routine is noinline  <4>]]
 
 
     Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
 
 
 LOOP BEGIN at pyramid.h(46,10)
-   remark #17102: loop was not parallelized: not a parallelization candidate
-   remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
-LOOP END
-
-LOOP BEGIN at pyramid.h(51,35)
    remark #17102: loop was not parallelized: not a parallelization candidate
    remark #15523: loop was not vectorized: loop control variable i was found, but loop iteration count cannot be computed before executing the loop
 LOOP END
@@ -3053,10 +3009,10 @@ pyramid.h(34,8):remark #34051: REGISTER ALLOCATION : [_ZN13PyramidParamsC1Ev] py
         Assigned     :   12[ rax rdx rbx rbp rsi rdi r12-r15 zmm0-zmm1]
         
     Routine temporaries
-        Total         :     150
-            Global    :      62
-            Local     :      88
-        Regenerable   :      22
+        Total         :     102
+            Global    :      47
+            Local     :      55
+        Regenerable   :       8
         Spilled       :       7
         
     Routine stack
@@ -3064,8 +3020,8 @@ pyramid.h(34,8):remark #34051: REGISTER ALLOCATION : [_ZN13PyramidParamsC1Ev] py
             Reads     :       1 [0.00e+00 ~ 0.0%]
             Writes    :       1 [0.00e+00 ~ 0.0%]
         Spills        :       8 bytes*
-            Reads     :       1 [2.62e+00 ~ 0.6%]
-            Writes    :       1 [5.39e+00 ~ 1.3%]
+            Reads     :       1 [2.59e+00 ~ 0.9%]
+            Writes    :       1 [5.33e+00 ~ 1.8%]
     
     Notes
     
@@ -3280,15 +3236,11 @@ Begin optimization report for: AffineHessianDetector::~AffineHessianDetector(Aff
     Report from: Interprocedural optimizations [ipo]
 
 INLINE REPORT: (AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *)) [47/333=14.1%] hesaff.cpp(70,28)
-  -> INLINE (MANUAL): (70,29) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 63) (sz = 68)
-    -> INLINE (MANUAL): pyramid.h:(64,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 63) (sz = 68)
-      -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+  -> INLINE (MANUAL): (70,29) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 53) (sz = 58)
+    -> INLINE (MANUAL): pyramid.h:(59,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 53) (sz = 58)
+      -> (59,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
          [[ Unable to inline callsite  <1>]]
-      -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-         [[ Unable to inline callsite  <1>]]
-      -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-         [[ Unable to inline callsite  <1>]]
-      -> INLINE (MANUAL): (64,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
+      -> INLINE (MANUAL): (59,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
         -> INLINE (MANUAL): (18,8) std::vector<float, std::allocator<float>>::~vector(std::vector<float, std::allocator<float>> *) (isz = 40) (sz = 45)
           -> /usr/include/c++/5/bits/stl_vector.h:(424,7) std::_Vector_base<float, std::allocator<float>>::~_Vector_base(std::_Vector_base<float, std::allocator<float>> *const) (isz = 18) (sz = 23)
              [[ Callee not marked with inlining pragma  <2>]]
@@ -3402,12 +3354,12 @@ hesaff.cpp(70,28):remark #34051: REGISTER ALLOCATION : [_ZN21AffineHessianDetect
         Reserved     :    2[ rsp rip]
         Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
         Callee-save  :    6[ rbx rbp r12-r15]
-        Assigned     :    3[ rdi r14-r15]
+        Assigned     :    3[ rbx rdi r15]
         
     Routine temporaries
-        Total         :      46
+        Total         :      42
             Global    :      14
-            Local     :      32
+            Local     :      28
         Regenerable   :       0
         Spilled       :       2
         
@@ -3455,12 +3407,12 @@ Begin optimization report for: HessianKeypointCallback::~HessianKeypointCallback
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (HessianKeypointCallback::~HessianKeypointCallback(HessianKeypointCallback *)) [51/333=15.3%] pyramid.h(61,38)
+INLINE REPORT: (HessianKeypointCallback::~HessianKeypointCallback(HessianKeypointCallback *)) [51/333=15.3%] pyramid.h(56,38)
 
 
     Report from: Code generation optimizations [cg]
 
-pyramid.h(61,38):remark #34051: REGISTER ALLOCATION : [_ZN23HessianKeypointCallbackD1Ev] pyramid.h:61
+pyramid.h(56,38):remark #34051: REGISTER ALLOCATION : [_ZN23HessianKeypointCallbackD1Ev] pyramid.h:56
 
     Hardware registers
         Reserved     :    2[ rsp rip]
@@ -3495,14 +3447,14 @@ Begin optimization report for: HessianKeypointCallback::~HessianKeypointCallback
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (HessianKeypointCallback::~HessianKeypointCallback(HessianKeypointCallback *const)) [52/333=15.6%] pyramid.h(61,12)
-  -> EXTERN: (61,12) operator delete(void *)
-  -> INLINE (MANUAL): (61,12) HessianKeypointCallback::~HessianKeypointCallback(HessianKeypointCallback *) (isz = 2) (sz = 7)
+INLINE REPORT: (HessianKeypointCallback::~HessianKeypointCallback(HessianKeypointCallback *const)) [52/333=15.6%] pyramid.h(56,12)
+  -> EXTERN: (56,12) operator delete(void *)
+  -> INLINE (MANUAL): (56,12) HessianKeypointCallback::~HessianKeypointCallback(HessianKeypointCallback *) (isz = 2) (sz = 7)
 
 
     Report from: Code generation optimizations [cg]
 
-pyramid.h(61,12):remark #34051: REGISTER ALLOCATION : [_ZN23HessianKeypointCallbackD0Ev] pyramid.h:61
+pyramid.h(56,12):remark #34051: REGISTER ALLOCATION : [_ZN23HessianKeypointCallbackD0Ev] pyramid.h:56
 
     Hardware registers
         Reserved     :    2[ rsp rip]
@@ -3537,7 +3489,7 @@ Begin optimization report for: HessianKeypointCallback::HessianKeypointCallback(
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (HessianKeypointCallback::HessianKeypointCallback(HessianKeypointCallback *)) pyramid.h(57,7)
+DEAD STATIC FUNCTION: (HessianKeypointCallback::HessianKeypointCallback(HessianKeypointCallback *)) pyramid.h(52,7)
 
 ===========================================================================
 
@@ -3545,7 +3497,7 @@ Begin optimization report for: HessianKeypointCallback::HessianKeypointCallback(
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (HessianKeypointCallback::HessianKeypointCallback(HessianKeypointCallback *const)) pyramid.h(57,7)
+DEAD STATIC FUNCTION: (HessianKeypointCallback::HessianKeypointCallback(HessianKeypointCallback *const)) pyramid.h(52,7)
 
 ===========================================================================
 
@@ -3553,7 +3505,7 @@ Begin optimization report for: HessianDetector::HessianDetector(HessianDetector 
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (HessianDetector::HessianDetector(HessianDetector *, const PyramidParams &)) pyramid.h(81,7)
+DEAD STATIC FUNCTION: (HessianDetector::HessianDetector(HessianDetector *, const PyramidParams &)) pyramid.h(76,7)
 
 ===========================================================================
 
@@ -3561,7 +3513,7 @@ Begin optimization report for: HessianDetector::HessianDetector(HessianDetector 
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (HessianDetector::HessianDetector(HessianDetector *const, const PyramidParams &)) pyramid.h(74,4)
+DEAD STATIC FUNCTION: (HessianDetector::HessianDetector(HessianDetector *const, const PyramidParams &)) pyramid.h(69,4)
 
 ===========================================================================
 
@@ -3569,7 +3521,7 @@ Begin optimization report for: HessianDetector::setHessianKeypointCallback(Hessi
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (HessianDetector::setHessianKeypointCallback(HessianDetector *, HessianKeypointCallback *)) pyramid.h(85,7)
+DEAD STATIC FUNCTION: (HessianDetector::setHessianKeypointCallback(HessianDetector *, HessianKeypointCallback *)) pyramid.h(80,7)
 
 ===========================================================================
 
@@ -3577,7 +3529,7 @@ Begin optimization report for: HessianDetector::~HessianDetector(HessianDetector
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (HessianDetector::~HessianDetector(HessianDetector *)) pyramid.h(64,8)
+DEAD STATIC FUNCTION: (HessianDetector::~HessianDetector(HessianDetector *)) pyramid.h(59,8)
 
 ===========================================================================
 
@@ -3752,7 +3704,7 @@ INLINE REPORT: (_ZN21AffineHessianDetectorD0Ev(AffineHessianDetector *)) [71/333
 
     Report from: Code generation optimizations [cg]
 
-<compiler generated>:remark #34051: REGISTER ALLOCATION : [_ZThn904_N21AffineHessianDetectorD0Ev] (null):0
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [_ZThn712_N21AffineHessianDetectorD0Ev] (null):0
 
     Hardware registers
         Reserved     :    2[ rsp rip]
@@ -3789,7 +3741,7 @@ Begin optimization report for: AffineHessianDetector::~AffineHessianDetector(Aff
 
 INLINE REPORT: (AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *const)) [72/333=21.6%] hesaff.cpp(70,4)
   -> EXTERN: (70,4) operator delete(void *)
-  -> INLINE (MANUAL): (70,4) AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *) (isz = 359) (sz = 364)
+  -> INLINE (MANUAL): (70,4) AffineHessianDetector::~AffineHessianDetector(AffineHessianDetector *) (isz = 349) (sz = 354)
     -> INLINE (MANUAL): (70,29) cv::Mat_<float>::~Mat_(cv::Mat_<float> *) (isz = 2) (sz = 7)
       -> INLINE (MANUAL): /usr/local/include/opencv2/core/mat.hpp:(2038,30) cv::Mat::~Mat(cv::Mat *const) (isz = 0) (sz = 5)
         -> /usr/local/include/opencv2/core/mat.inl.hpp:(588,6) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
@@ -3880,9 +3832,9 @@ INLINE REPORT: (AffineHessianDetector::~AffineHessianDetector(AffineHessianDetec
            [[ Unable to inline callsite  <1>]]
         -> (80,7) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
            [[ Unable to inline callsite  <1>]]
-    -> INLINE (MANUAL): (70,29) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 63) (sz = 68)
-      -> INLINE (MANUAL): pyramid.h:(64,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 63) (sz = 68)
-        -> INLINE (MANUAL): (64,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
+    -> INLINE (MANUAL): (70,29) HessianDetector::~HessianDetector(HessianDetector *const) (isz = 53) (sz = 58)
+      -> INLINE (MANUAL): pyramid.h:(59,8) HessianDetector::~HessianDetector(HessianDetector *) (isz = 53) (sz = 58)
+        -> INLINE (MANUAL): (59,8) PyramidParams::~PyramidParams(PyramidParams *) (isz = 44) (sz = 49)
           -> INLINE (MANUAL): (18,8) std::vector<float, std::allocator<float>>::~vector(std::vector<float, std::allocator<float>> *) (isz = 40) (sz = 45)
             -> EXTERN: /usr/include/c++/5/bits/stl_vector.h:(424,7) __cxa_call_unexpected
             -> /usr/include/c++/5/bits/stl_vector.h:(424,7) std::_Vector_base<float, std::allocator<float>>::~_Vector_base(std::_Vector_base<float, std::allocator<float>> *const) (isz = 18) (sz = 23)
@@ -3896,11 +3848,7 @@ INLINE REPORT: (AffineHessianDetector::~AffineHessianDetector(AffineHessianDetec
                   -> INLINE (MANUAL): (178,4) std::allocator_traits<std::allocator<float>>::deallocate(std::allocator_traits<std::allocator<float>>::allocator_type &, std::allocator_traits<std::allocator<float>>::pointer, std::allocator_traits<std::allocator<float>>::size_type) (isz = 0) (sz = 9)
                     -> INLINE (MANUAL): /usr/include/c++/5/bits/alloc_traits.h:(517,13) __gnu_cxx::new_allocator<float>::deallocate(__gnu_cxx::new_allocator<float> *, __gnu_cxx::new_allocator<float>::pointer, __gnu_cxx::new_allocator<float>::size_type) (isz = 0) (sz = 7)
                       -> EXTERN: /usr/include/c++/5/ext/new_allocator.h:(110,9) operator delete(void *)
-        -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-           [[ Unable to inline callsite  <1>]]
-        -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
-           [[ Unable to inline callsite  <1>]]
-        -> (64,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
+        -> (59,8) cv::Mat::~Mat(cv::Mat *) (isz = 60) (sz = 65)
            [[ Unable to inline callsite  <1>]]
 
 
@@ -3912,12 +3860,12 @@ hesaff.cpp(70,4):remark #34051: REGISTER ALLOCATION : [_ZN21AffineHessianDetecto
         Reserved     :    2[ rsp rip]
         Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
         Callee-save  :    6[ rbx rbp r12-r15]
-        Assigned     :    3[ rbx rdi r15]
+        Assigned     :    3[ rbx rbp rdi]
         
     Routine temporaries
-        Total         :      47
+        Total         :      43
             Global    :      14
-            Local     :      33
+            Local     :      29
         Regenerable   :       0
         Spilled       :       2
         
@@ -3946,7 +3894,7 @@ INLINE REPORT: (_ZN21AffineHessianDetectorD1Ev(AffineHessianDetector *)) [73/333
 
     Report from: Code generation optimizations [cg]
 
-<compiler generated>:remark #34051: REGISTER ALLOCATION : [_ZThn904_N21AffineHessianDetectorD1Ev] (null):0
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [_ZThn712_N21AffineHessianDetectorD1Ev] (null):0
 
     Hardware registers
         Reserved     :    2[ rsp rip]
@@ -4027,7 +3975,7 @@ INLINE REPORT: (onAffineShapeFound(AffineHessianDetector *, const cv::Mat &, flo
 
     Report from: Code generation optimizations [cg]
 
-<compiler generated>:remark #34051: REGISTER ALLOCATION : [_ZThn904_N21AffineHessianDetector18onAffineShapeFoundERKN2cv3MatEffffffffifi] (null):0
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [_ZThn712_N21AffineHessianDetector18onAffineShapeFoundERKN2cv3MatEffffffffifi] (null):0
 
     Hardware registers
         Reserved     :    2[ rsp rip]

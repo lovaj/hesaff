@@ -46,11 +46,6 @@ struct PyramidParams
          for(size_t i=2; i<numberOfScales+2; i++){
         	 sigmas.push_back(sigmas[i-1]*sigmaStep);
          }
-         std::cout<<"numberOfScales="<<numberOfScales<<std::endl;
-         std::cout<<"size="<<sigmas.size()<<std::endl;
-         for(size_t i=1; i<sigmas.size(); i++){
-        	 std::cout<<"sigmas="<<sigmas[i]<<std::endl;
-         }
       }
 };
 
@@ -90,9 +85,9 @@ public:
 protected:   
    void detectOctaveKeypoints(const Mat &firstLevel, float pixelDistance, Mat &nextOctaveFirstLevel);
    void localizeKeypoint(int r, int c, float curScale, float pixelDistance,
-		   const Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low);
+		   const Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low, const cv::Mat &cur);
    void findLevelKeypoints(float curScale, float pixelDistance ,
-		   const cv::Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low);
+		   const cv::Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low, const cv::Mat &cur);
    Mat hessianResponse(const Mat &inputImage, float norm);
    
 private:
@@ -104,7 +99,6 @@ private:
 
    // temporary arrays used by protected functions
    Mat octaveMap;
-   Mat low, cur;
 };
 
 #endif // __PYRAMID_H__

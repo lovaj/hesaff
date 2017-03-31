@@ -123,7 +123,7 @@ Mat HessianDetector::hessianResponse(const Mat &inputImage, float norm)
 #define POINT_SAFETY_BORDER  3
 
 void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixelDistance,
-		const Mat &high, const Mat &prevBlur, const Mat &blur, const Mat &low)
+		const Mat &high, const Mat &prevBlur, const Mat &blur, const Mat &low, const Mat &cur)
 {
    const int cols = cur.cols;
    const int rows = cur.rows;
@@ -198,7 +198,6 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
 
    // output keypoint
    float scale = curScale * pow(2.0f, b[2] / par.numberOfScales );
-      
    // set point type according to final location
    int type = getHessianPointType(blur.ptr<float>(r)+c, val);
 
@@ -208,7 +207,7 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
 }
 
 void HessianDetector::findLevelKeypoints(float curScale, float pixelDistance,
-		const cv::Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low)
+		const cv::Mat &high, const cv::Mat &prevBlur, const cv::Mat &blur, const cv::Mat &low, const cv::Mat &cur)
 {
    assert(par.border >= 2);
    const int rows = cur.rows;
@@ -221,9 +220,17 @@ void HessianDetector::findLevelKeypoints(float curScale, float pixelDistance,
          if ( (val > positiveThreshold && (isMax(val, cur, r, c) && isMax(val, low, r, c) && isMax(val, high, r, c))) ||
               (val < negativeThreshold && (isMin(val, cur, r, c) && isMin(val, low, r, c) && isMin(val, high, r, c))) )
             // either positive -> local max. or negative -> local min.
-            localizeKeypoint(r, c, curScale, pixelDistance, high, prevBlur, blur, low);
+            localizeKeypoint(r, c, curScale, pixelDistance, high, prevBlur, blur, low, cur);
       }
    }
+}
+
+void equalMats(const Mat &a, const Mat &b){
+	// Get a matrix with non-zero values at points where the
+	// two matrices have different values
+	cv::Mat diff = a != b;
+	// Equal if no elements disagree
+	assert( cv::countNonZero(diff) == 0);
 }
 
 void HessianDetector::detectOctaveKeypoints(const Mat &firstLevel, float pixelDistance, Mat &nextOctaveFirstLevel)
@@ -231,24 +238,33 @@ void HessianDetector::detectOctaveKeypoints(const Mat &firstLevel, float pixelDi
    octaveMap = Mat::zeros(firstLevel.rows, firstLevel.cols, CV_8UC1);
    float sigmaStep = pow(2.0f, 1.0f / (float) par.numberOfScales);
    float curSigma = par.initialSigma;
-   Mat blur = firstLevel;
-   cur = hessianResponse(blur, curSigma*curSigma);
+   Mat cur = hessianResponse(firstLevel, curSigma*curSigma);
    int numLevels = 1;
    
    Mat prevBlur;
    Mat low;
+   vector<Mat> blurs (par.numberOfScales+3, Mat());
+   vector<Mat> hessRes (par.numberOfScales+2, Mat());
+   blurs[1] = firstLevel.clone();
+   for (int i = 1; i < par.numberOfScales+2; i++){
+	   float sigma = par.sigmas[i]* sqrt(sigmaStep * sigmaStep - 1.0f);
+	   blurs[i+1] = gaussianBlur(blurs[i], sigma);
+   }
+   for (int i = 1; i < par.numberOfScales+2; i++)
+	   cout<<"i="<<i<<" outside blurs[i](1,1)="<<blurs[i].at<float>(1,1)<<std::endl;
+
 
    //toDo: octaveMap is shared, need synchronization
    ANNOTATE_SITE_BEGIN( scales );  // Place before the loop control statement (and before any loop directives) to begin a parallel code region (parallel site).
    for (int i = 1; i < par.numberOfScales+2; i++)
    {
-	  std::cout<<"curSigma="<<curSigma<<std::endl;
-	  std::cout<<"sigmas="<<par.sigmas[i]<<std::endl;
+	  //assert(equalMats(blur, blurs[i]));
+	  curSigma = par.sigmas[i];
 	  ANNOTATE_ITERATION_TASK( MyTask1 );  // Place at the start of loop body. This annotation identifies an entire body as a task.
       // compute the increase necessary for the next level and compute the next level
       float sigma = curSigma * sqrt(sigmaStep * sigmaStep - 1.0f);
       // do the blurring
-      Mat nextBlur = gaussianBlur(blur, sigma);
+      Mat nextBlur = gaussianBlur(blurs[i], sigma);
       // the next level sigma
       sigma = curSigma*sigmaStep;
       // compute response for current level
@@ -258,16 +274,15 @@ void HessianDetector::detectOctaveKeypoints(const Mat &firstLevel, float pixelDi
       if (numLevels == 3)
       {
          // find keypoints in this part of octave for curLevel
-         findLevelKeypoints(curSigma, pixelDistance, high, prevBlur, blur, low);
+         findLevelKeypoints(curSigma, pixelDistance, high, prevBlur, blurs[i], low, cur);
          numLevels--;
       }      
       if (i == par.numberOfScales)
          // downsample the right level for the next octave
          nextOctaveFirstLevel = halfImage(nextBlur);
-      prevBlur = blur; blur = nextBlur;
+      prevBlur = blurs[i];
       // shift to the next response 
       low = cur; cur = high;
-      curSigma *= sigmaStep;
    }
    ANNOTATE_SITE_END();  // End the parallel code region, after task execution completes
 }

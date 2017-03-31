@@ -22,7 +22,7 @@ void interpolate(const cv::Mat &im, float ofsx, float ofsy, float a11, float a12
 bool interpolateCheckBorders(const cv::Mat &im, float ofsx, float ofsy, float a11, float a12, float a21, float a22, const cv::Mat &res);
 void photometricallyNormalize(cv::Mat &image, const cv::Mat &weight_mask, float &sum, float &var);
 
-cv::Mat gaussianBlur(const cv::Mat input, float sigma);
+cv::Mat gaussianBlur(const cv::Mat input, const float sigma);
 void gaussianBlurInplace(cv::Mat &inplace, float sigma);
 cv::Mat doubleImage(const cv::Mat &input);
 cv::Mat halfImage(const cv::Mat &input);

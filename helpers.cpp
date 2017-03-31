@@ -342,7 +342,7 @@ void photometricallyNormalize(Mat &image, const Mat &binaryMask, float &sum, flo
       }
 }
 
-Mat gaussianBlur(const Mat input, float sigma)
+Mat gaussianBlur(const Mat input, const float sigma)
 {
    Mat ret(input.rows, input.cols, input.type());
    int size = (int)(2.0 * 3.0 * sigma + 1.0); if (size % 2 == 0) size++;      
