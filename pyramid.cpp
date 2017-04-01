@@ -264,7 +264,7 @@ void HessianDetector::detectOctaveKeypoints(const Mat &firstLevel, float pixelDi
       // compute the increase necessary for the next level and compute the next level
       float sigma = curSigma * sqrt(sigmaStep * sigmaStep - 1.0f);
       // do the blurring
-      Mat nextBlur = gaussianBlur(blurs[i], sigma);
+      Mat nextBlur = blurs[i+1];
       // the next level sigma
       sigma = curSigma*sigmaStep;
       // compute response for current level

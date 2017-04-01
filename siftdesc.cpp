@@ -54,7 +54,6 @@ void SIFTDescriptor::samplePatch()
    {
       const int br0 = par.spatialBins * bin0[r]; const float wr0 = w0[r];
       const int br1 = par.spatialBins * bin1[r]; const float wr1 = w1[r];
-	  #pragma omp simd
       for (int c = 0; c < par.patchSize; ++c)
       {
          float val = mask.at<float>(r,c) * grad.at<float>(r,c);
