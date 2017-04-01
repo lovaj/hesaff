@@ -99,11 +99,11 @@ void SIFTDescriptor::sample()
 {
    for (size_t i = 0; i < vec.size(); i++) vec[i]=0;
    // accumulate histograms
-   samplePatch(); normalize();
+   samplePatch(); cv::normalize(vec,vec);
    // check if there are some values above threshold
    bool changed = false; 
    for (size_t i = 0; i < vec.size(); i++) if (vec[i] > par.maxBinValue) { vec[i] = par.maxBinValue; changed = true; }
-   if (changed) normalize();
+   if (changed) cv::normalize(vec,vec);
 
    for (size_t i = 0; i < vec.size(); i++) 
    {
